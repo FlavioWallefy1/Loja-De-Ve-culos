@@ -15,6 +15,7 @@ public class TelaVeiculo {
 
 
 	public void exibir()  {
+		
 		int opcao = 0;
 		while (opcao != 5) { 
 			System.out.println("Olá, bem vindo!");
@@ -36,17 +37,17 @@ public class TelaVeiculo {
 			while (opcao < 0 || opcao > 5);
 
 			if (opcao == 1) {
-					this.inserir();
+				this.inserir();
 			}
-			//		} else if(opcao == 2) {
-			//
+			else if(opcao == 2) {
+				this.editar();
+			}
 			else if(opcao == 3) {
 				this.remover();
 			}
 			else if(opcao == 4) {
 				this.consultar();
 			}
-
 			else if(opcao != 5) {
 				System.out.println("Invalido");
 			}
@@ -54,6 +55,7 @@ public class TelaVeiculo {
 		System.out.println("Até a proxima");
 	}
 
+	
 	private void inserir() {
 		Veiculo veiculo = new Veiculo(this.lerString("modelo"), this.lerString("marca"), this.lerString("ano"), this.lerString("placa"));
 
@@ -65,8 +67,26 @@ public class TelaVeiculo {
 			System.out.println(e.getMessage());
 		}
 
-		
 	}
+
+
+	private void editar() {
+		String placa = lerString("placa");
+
+		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
+		String novoModelo = lerString("novo modelo");
+		String novaMarca = lerString("nova marca");
+		String novoAno = lerString("novo ano");
+
+		Veiculo veiculo = new Veiculo(novoModelo, novaMarca, novoAno, placa);
+		try {
+			controlador.editar(veiculo);
+			System.out.println("Veículo editado com sucesso!");
+		} catch (ExcecaoNegocio e) {
+			System.out.println( e.getMessage());
+		}
+	}
+
 
 	private String lerString(String nomeAtributo) {
 		String entrada = "";
@@ -80,19 +100,21 @@ public class TelaVeiculo {
 
 	}
 
+
 	private void remover() {
 		String placa = lerString("placa");
 
 		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-		
+
 		try {
-	        controlador.remover(placa);
-	        System.out.println("Veículo removido com sucesso!");
-	    } catch (ExcecaoNegocio e) {
-	        System.out.println(e.getMessage());
-	    }
+			controlador.remover(placa);
+			System.out.println("Veículo removido com sucesso!");
+		} catch (ExcecaoNegocio e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
+	
 	private void consultar() {
 		System.out.println("Digite a placa do veículo que deseja consultar:");
 		String placa = scanner.nextLine();
@@ -113,8 +135,5 @@ public class TelaVeiculo {
 			System.out.println("Erro ao consultar veículo: " + e.getMessage());
 		}
 	}
-
-
-
 
 }
