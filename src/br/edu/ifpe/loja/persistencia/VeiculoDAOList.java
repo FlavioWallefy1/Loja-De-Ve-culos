@@ -2,10 +2,9 @@ package br.edu.ifpe.loja.persistencia;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import br.edu.ifpe.loja.entidades.Veiculo;
 
-public class VeiculoDAOList {
+public class VeiculoDAOList implements IVeiculoDAO{
 
 	private List<Veiculo> lista;
 	private static VeiculoDAOList instancia;
@@ -14,7 +13,7 @@ public class VeiculoDAOList {
 		this.lista = new ArrayList<>();
 	}
 	
-	protected static VeiculoDAO getInstancia() { //3. criar a instancia da classe
+	protected static VeiculoDAOList getInstancia() { 
         if (instancia == null) {
             instancia = new VeiculoDAOList();
         }
@@ -22,11 +21,22 @@ public class VeiculoDAOList {
         return instancia;
     }
 
-    public void inserir(Veiculo veiculo) {
+    public void inserir(Veiculo veiculo) { 
         this.lista.add(veiculo);
     }
 
-    private boolean isListEmpty() {
-        return this.lista.length() == 0;
+    public List<Veiculo> listarTodos() {
+        return lista;
     }
+
+    public List<Veiculo> consultar(String modelo) {
+        List<Veiculo> veiculosEncontrados = new ArrayList<>();
+        for (Veiculo veiculo : lista) {
+            if (veiculo.getModelo().equalsIgnoreCase(modelo)) {
+                veiculosEncontrados.add(veiculo);
+            }
+        }
+        return veiculosEncontrados;
+    }
+
 }
