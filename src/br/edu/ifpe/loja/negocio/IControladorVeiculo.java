@@ -9,5 +9,7 @@ public interface IControladorVeiculo {
 
 	void inserir (Veiculo veiculo) throws ExcecaoNegocio;
 
+	void remover (String placa) throws ExcecaoNegocio;
+	
 	List<Veiculo> consultar(String modelo) throws ExcecaoNegocio;
 }

@@ -9,34 +9,38 @@ import br.edu.ifpe.loja.persistencia.IVeiculoDAO;
 import br.edu.ifpe.loja.persistencia.FabricaDAO;
 
 
-public class ControladorVeiculo implements IControladorVeiculo{
 
+public class ControladorVeiculo implements IControladorVeiculo{
+	
 	public void inserir(Veiculo veiculo) throws ExcecaoNegocio{
-		if(!this.isValido(veiculo)) {
-			throw new ExcecaoNegocio("Veiculo inválido!");
-		}
+		 List<Veiculo> veiculosComPlaca = consultar(veiculo.getPlaca());
+		    if (!veiculosComPlaca.isEmpty()) {
+		        throw new ExcecaoNegocio("Já existe um veículo cadastrado com a placa informada.");
+		    }
 
 		IVeiculoDAO dao = FabricaDAO.getVeiculoDAO();
 		dao.inserir(veiculo);
 	}
-
-	private boolean isValido(Veiculo veiculo) {
-		if (veiculo.getModelo() == null || veiculo.getMarca() == null || veiculo.getAno() == null) {
-			return false;
-		}
-		return true;
-	}
 	
-	public List<Veiculo> consultar(String modelo) throws ExcecaoNegocio {
-        IVeiculoDAO dao = FabricaDAO.getVeiculoDAO();
-        List<Veiculo> listaVeiculos = dao.listarTodos();
-        List<Veiculo> veiculosEncontrados = new ArrayList<>();
+	public void remover(String placa) throws ExcecaoNegocio{
+		IVeiculoDAO dao = FabricaDAO.getVeiculoDAO();
+		List<Veiculo> veiculosComPlaca = consultar(placa);
+		if (veiculosComPlaca.isEmpty()) {
+	        throw new ExcecaoNegocio("Esse veículo não está cadastrado.");
+	    }
+		
+		dao.remover(placa);
+	}
+	public List<Veiculo> consultar(String placa) throws ExcecaoNegocio {
+		IVeiculoDAO dao = FabricaDAO.getVeiculoDAO();
+		List<Veiculo> listaVeiculos = dao.listarTodos();
+		List<Veiculo> veiculosEncontrados = new ArrayList<>();
 
-        for (Veiculo veiculo : listaVeiculos) {
-            if (veiculo.getModelo().equalsIgnoreCase(modelo)) {
-                veiculosEncontrados.add(veiculo);
-            }
-        }
-        return veiculosEncontrados;
-    }
+		for (Veiculo veiculo : listaVeiculos) {
+			if (veiculo.getPlaca().equalsIgnoreCase(placa)) {
+				veiculosEncontrados.add(veiculo);
+			}
+		}
+		return veiculosEncontrados;
+	}
 }

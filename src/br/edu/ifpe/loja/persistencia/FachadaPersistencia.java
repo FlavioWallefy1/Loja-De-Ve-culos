@@ -8,7 +8,7 @@ public interface FachadaPersistencia {
 
 	void inserirVeiculo(Veiculo veiculo);
 	void editarVeiculo(Veiculo veiculo);
-	void removerVeiculo(int id);
+	void removerVeiculo(Veiculo veiculo);
 	List<Veiculo> lisVeiculos();
 	
 }

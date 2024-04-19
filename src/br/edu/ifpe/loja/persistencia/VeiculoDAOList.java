@@ -1,6 +1,7 @@
 package br.edu.ifpe.loja.persistencia;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import br.edu.ifpe.loja.entidades.Veiculo;
 
@@ -23,6 +24,16 @@ public class VeiculoDAOList implements IVeiculoDAO{
 
     public void inserir(Veiculo veiculo) { 
         this.lista.add(veiculo);
+    }
+    
+    public void remover(String placa) {
+    	for (Iterator<Veiculo> iterator = lista.iterator(); iterator.hasNext();) {
+            Veiculo veiculo = iterator.next();
+            if (veiculo.getPlaca().equalsIgnoreCase(placa)) {
+                iterator.remove();
+                return;
+            }
+        }
     }
 
     public List<Veiculo> listarTodos() {

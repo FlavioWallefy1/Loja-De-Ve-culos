@@ -12,9 +12,9 @@ import br.edu.ifpe.loja.negocio.IControladorVeiculo;
 public class TelaVeiculo {
 
 	Scanner scanner = new Scanner(System.in);
-	
 
-	public void exibir() {
+
+	public void exibir()  {
 		int opcao = 0;
 		while (opcao != 5) { 
 			System.out.println("Olá, bem vindo!");
@@ -36,16 +36,13 @@ public class TelaVeiculo {
 			while (opcao < 0 || opcao > 5);
 
 			if (opcao == 1) {
-				try {
 					this.inserir();
-				} catch (ExcecaoNegocio e) {
-					System.out.println("Erro ao inserir veículo: " + e.getMessage());
-				}
 			}
 			//		} else if(opcao == 2) {
 			//
-			//		}else if(opcao == 3) {
-			//		}
+			else if(opcao == 3) {
+				this.remover();
+			}
 			else if(opcao == 4) {
 				this.consultar();
 			}
@@ -57,46 +54,67 @@ public class TelaVeiculo {
 		System.out.println("Até a proxima");
 	}
 
-	private void inserir() throws ExcecaoNegocio {
-		Veiculo veiculo = new Veiculo(this.lerString("modelo"), this.lerString("marca"), this.lerString("ano"));
+	private void inserir() {
+		Veiculo veiculo = new Veiculo(this.lerString("modelo"), this.lerString("marca"), this.lerString("ano"), this.lerString("placa"));
 
 		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-		controlador.inserir(veiculo);
-		System.out.println("Veículo cadastrado com sucesso!");
+		try {
+			controlador.inserir(veiculo);
+			System.out.println("Veículo cadastrado com sucesso!");
+		}catch (ExcecaoNegocio e) {
+			System.out.println(e.getMessage());
+		}
+
+		
 	}
-
-	private void consultar() {
-        System.out.println("Digite o modelo do veículo que deseja consultar:");
-        String modelo = scanner.nextLine();
-
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-        
-        try {
-        	List<Veiculo> veiculosEncontrados = controlador.consultar(modelo);
-            if (veiculosEncontrados.isEmpty()) {
-                System.out.println("Nenhum veículo encontrado com o modelo informado.");
-            } else {
-                System.out.println("Veículos encontrados:");
-                for (Veiculo veiculo : veiculosEncontrados) {
-                    System.out.println(veiculo); 
-                }
-            }
-        } catch (ExcecaoNegocio e) {
-            System.out.println("Erro ao consultar veículo: " + e.getMessage());
-        }
-    }
-
-
 
 	private String lerString(String nomeAtributo) {
 		String entrada = "";
 
 		while (entrada.trim().length() == 0) {
-			System.out.println("Infome: " + nomeAtributo + " do veículo: ");
+			System.out.println("Informe: " + nomeAtributo + " do veículo: ");
 			entrada = scanner.nextLine();
 		}
 
 		return entrada;
 
 	}
+
+	private void remover() {
+		String placa = lerString("placa");
+
+		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
+		
+		try {
+	        controlador.remover(placa);
+	        System.out.println("Veículo removido com sucesso!");
+	    } catch (ExcecaoNegocio e) {
+	        System.out.println(e.getMessage());
+	    }
+	}
+
+	private void consultar() {
+		System.out.println("Digite a placa do veículo que deseja consultar:");
+		String placa = scanner.nextLine();
+
+		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
+
+		try {
+			List<Veiculo> veiculosEncontrados = controlador.consultar(placa);
+			if (veiculosEncontrados.isEmpty()) {
+				System.out.println("Nenhum veículo encontrado com a placa informada.");
+			} else {
+				System.out.println("Veículos encontrados:");
+				for (Veiculo veiculo : veiculosEncontrados) {
+					System.out.println(veiculo.getModelo()); 
+				}
+			}
+		} catch (ExcecaoNegocio e) {
+			System.out.println("Erro ao consultar veículo: " + e.getMessage());
+		}
+	}
+
+
+
+
 }

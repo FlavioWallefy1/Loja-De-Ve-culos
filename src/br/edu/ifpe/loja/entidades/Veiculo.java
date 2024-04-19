@@ -5,7 +5,14 @@ public class Veiculo {
 	public String modelo;
 	public String marca;
 	public String ano;
+	public String placa;
 	
+	public String getPlaca() {
+		return placa;
+	}
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 	public String getModelo() {
 		return modelo;
 	}
@@ -25,11 +32,12 @@ public class Veiculo {
 		this.ano = ano;
 	}
 	
-	public Veiculo(String modelo, String marca, String ano) {
+	public Veiculo(String modelo, String marca, String ano, String placa) {
 		super();
 		this.modelo = modelo;
 		this.marca = marca;
 		this.ano = ano;
+		this.placa = placa;
 	}
 	
 	
