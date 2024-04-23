@@ -60,8 +60,12 @@ public class TelaVeiculo {
 
 	
 	private void inserir() {
-		Veiculo veiculo = new Veiculo(this.lerString("modelo"), this.lerString("marca"), Integer.parseInt(lerString("ano de fabricação")),  Integer.parseInt(lerString("ano do modelo")) , this.lerString("placa"));
-
+		Veiculo veiculo = new Veiculo.VeiculoBuilder(this.lerString("modelo"), this.lerString("marca"))
+			    .anoFabricacao(Integer.parseInt(lerString("ano de fabricação")))
+			    .anoModelo(Integer.parseInt(lerString("ano do modelo")))
+			    .placa(this.lerString("placa"))
+			    .criar();
+		
 		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
 		try {
 			controlador.inserir(veiculo);
@@ -84,7 +88,11 @@ public class TelaVeiculo {
         int novoAnoModelo = Integer.parseInt(lerString("novo ano do modelo"));
         System.out.println("============================");
 
-		Veiculo veiculo = new Veiculo(novoModelo, novaMarca, novoAnoFabricacao, novoAnoModelo,placa);
+        Veiculo veiculo = new Veiculo.VeiculoBuilder(novoModelo, novaMarca)
+                .anoFabricacao(novoAnoFabricacao)
+                .anoModelo(novoAnoModelo)
+                .placa(placa)
+                .criar(); // Correção aqui
 		try {
 			controlador.editar(veiculo);
 			System.out.println("Veículo editado com sucesso!");
@@ -105,6 +113,7 @@ public class TelaVeiculo {
 		return entrada;
 
 	}
+	
 
 
 	private void remover() {
