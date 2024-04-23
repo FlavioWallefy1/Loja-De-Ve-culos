@@ -4,7 +4,8 @@ public class Veiculo {
 
 	public String modelo;
 	public String marca;
-	public String ano;
+	public int anoFabricacao;
+	public int anoModelo;
 	public String placa;
 	
 	public String getPlaca() {
@@ -25,23 +26,25 @@ public class Veiculo {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public String getAno() {
-		return ano;
+	public int getAnoFabricacao() {
+		return anoFabricacao;
 	}
-	public void setAno(String ano) {
-		this.ano = ano;
+	public void setAnoFabricacao(int anoFabricacao) {
+		this.anoFabricacao = anoFabricacao;
 	}
-	
-	public Veiculo(String modelo, String marca, String ano, String placa) {
+	public int getAnoModelo() {
+		return anoModelo;
+	}
+	public void setAnoModelo(int anoModelo) {
+		this.anoModelo = anoModelo;
+	}
+		
+	public Veiculo(String modelo, String marca, int anoFabricacao, int anoModelo, String placa) {
 		super();
 		this.modelo = modelo;
 		this.marca = marca;
-		this.ano = ano;
+		this.anoFabricacao = anoFabricacao;
+		this.anoModelo = anoModelo;
 		this.placa = placa;
-	}
-	
-	
-	
-	
-	
+	}	
 }

@@ -18,12 +18,14 @@ public class TelaVeiculo {
 		
 		int opcao = 0;
 		while (opcao != 5) { 
+			System.out.println("============================");
 			System.out.println("Olá, bem vindo!");
 			System.out.println("Digite 1 para cadastrar um veículo.");
 			System.out.println("Digite 2 para editar um veículo.");
 			System.out.println("Digite 3 para remover um veículo");
 			System.out.println("Digite 4 para consultar um veículo.");
 			System.out.println("Digite 5 para sair");
+			System.out.println("============================");
 
 			try {
 				opcao = Integer.parseInt(scanner.nextLine());
@@ -32,6 +34,7 @@ public class TelaVeiculo {
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("Digite um número válido!");
+				 continue;
 			}
 
 			while (opcao < 0 || opcao > 5);
@@ -57,7 +60,7 @@ public class TelaVeiculo {
 
 	
 	private void inserir() {
-		Veiculo veiculo = new Veiculo(this.lerString("modelo"), this.lerString("marca"), this.lerString("ano"), this.lerString("placa"));
+		Veiculo veiculo = new Veiculo(this.lerString("modelo"), this.lerString("marca"), Integer.parseInt(lerString("ano de fabricação")),  Integer.parseInt(lerString("ano do modelo")) , this.lerString("placa"));
 
 		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
 		try {
@@ -74,11 +77,14 @@ public class TelaVeiculo {
 		String placa = lerString("placa");
 
 		IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
+		System.out.println("============================");
 		String novoModelo = lerString("novo modelo");
 		String novaMarca = lerString("nova marca");
-		String novoAno = lerString("novo ano");
+		int novoAnoFabricacao = Integer.parseInt(lerString("novo ano de fabricação"));
+        int novoAnoModelo = Integer.parseInt(lerString("novo ano do modelo"));
+        System.out.println("============================");
 
-		Veiculo veiculo = new Veiculo(novoModelo, novaMarca, novoAno, placa);
+		Veiculo veiculo = new Veiculo(novoModelo, novaMarca, novoAnoFabricacao, novoAnoModelo,placa);
 		try {
 			controlador.editar(veiculo);
 			System.out.println("Veículo editado com sucesso!");
@@ -128,7 +134,12 @@ public class TelaVeiculo {
 			} else {
 				System.out.println("Veículos encontrados:");
 				for (Veiculo veiculo : veiculosEncontrados) {
-					System.out.println(veiculo.getModelo()); 
+					System.out.println("============================");
+					System.out.println("Modelo: "+veiculo.getModelo());
+					System.out.println("Marca: " + veiculo.getMarca());
+					System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());; 
+					System.out.println("Ano de modelo: " + veiculo.getAnoModelo());
+					System.out.println("============================");
 				}
 			}
 		} catch (ExcecaoNegocio e) {

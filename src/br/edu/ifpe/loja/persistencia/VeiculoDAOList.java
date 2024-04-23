@@ -29,11 +29,12 @@ public class VeiculoDAOList implements IVeiculoDAO{
 	public void editar(Veiculo veiculo) {
 		for (Veiculo veiculos : lista) {
 			if (veiculos.getPlaca().equalsIgnoreCase(veiculo.getPlaca())) {
-				veiculos.setModelo(veiculo.getModelo());
-				veiculos.setMarca(veiculo.getMarca());
-				veiculos.setAno(veiculo.getAno());
-				return;
-			}
+                veiculos.setModelo(veiculo.getModelo());
+                veiculos.setMarca(veiculo.getMarca());
+                veiculos.setAnoFabricacao(veiculo.getAnoFabricacao());
+                veiculos.setAnoModelo(veiculo.getAnoModelo());
+                return;
+            }
 		} 
 	}
 
