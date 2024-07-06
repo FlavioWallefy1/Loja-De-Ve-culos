@@ -37,8 +37,6 @@ public class TelaVeiculo {
 				 continue;
 			}
 
-			while (opcao < 0 || opcao > 5);
-
 			if (opcao == 1) {
 				this.inserir();
 			}
@@ -60,7 +58,9 @@ public class TelaVeiculo {
 
 	
 	private void inserir() {
-		Veiculo veiculo = new Veiculo.VeiculoBuilder(this.lerString("modelo"), this.lerString("marca"))
+		Veiculo veiculo = new Veiculo.VeiculoBuilder()
+				.modelo(this.lerString("modelo"))
+	            .marca(this.lerString("marca"))
 			    .anoFabricacao(Integer.parseInt(lerString("ano de fabricação")))
 			    .anoModelo(Integer.parseInt(lerString("ano do modelo")))
 			    .placa(this.lerString("placa"))
@@ -88,11 +88,13 @@ public class TelaVeiculo {
         int novoAnoModelo = Integer.parseInt(lerString("novo ano do modelo"));
         System.out.println("============================");
 
-        Veiculo veiculo = new Veiculo.VeiculoBuilder(novoModelo, novaMarca)
+        Veiculo veiculo = new Veiculo.VeiculoBuilder()
+        		.modelo(novoModelo)
+        		.marca(novaMarca)
                 .anoFabricacao(novoAnoFabricacao)
                 .anoModelo(novoAnoModelo)
                 .placa(placa)
-                .criar(); // Correção aqui
+                .criar(); 
 		try {
 			controlador.editar(veiculo);
 			System.out.println("Veículo editado com sucesso!");
