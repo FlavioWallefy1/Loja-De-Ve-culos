@@ -1,4 +1,4 @@
-package br.ifpe.edu.loja.apresentacao;
+package  br.edu.ifpe.loja.apresentacao;
 
 import java.util.List;
 import java.util.Scanner;
