@@ -28,6 +28,7 @@ public class ControladorVeiculo implements IControladorVeiculo {
         if (veiculoExistente == null) {
             throw new ExcecaoNegocio("Esse veículo não está cadastrado!");
         }
+        veiculo.setPlaca(veiculoExistente.getPlaca());
         dao.editar(veiculo);
     }
 

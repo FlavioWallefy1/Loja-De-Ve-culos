@@ -2,10 +2,10 @@ package  br.edu.ifpe.loja.apresentacao;
 
 import java.util.List;
 import java.util.Scanner;
-import br.edu.ifpe.loja.entidades.Veiculo;
-import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
+import br.edu.ifpe.loja.entidades.*;
 import br.edu.ifpe.loja.negocio.FabricaControlador;
 import br.edu.ifpe.loja.negocio.IControladorVeiculo;
+import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
 
 public class TelaVeiculo {
 
@@ -13,20 +13,20 @@ public class TelaVeiculo {
 
     public void exibir() {
         int opcao = 0;
-        while (opcao != 6) {  // Atualizado para 6 para incluir a nova opção
+        while (opcao != 6) {  
             System.out.println("============================");
             System.out.println("Olá, bem vindo!");
             System.out.println("Digite 1 para cadastrar um veículo.");
             System.out.println("Digite 2 para editar um veículo.");
             System.out.println("Digite 3 para remover um veículo");
             System.out.println("Digite 4 para consultar um veículo.");
-            System.out.println("Digite 5 para listar todos os veículos.");  // Nova opção
-            System.out.println("Digite 6 para sair");  // Atualizado para 6
+            System.out.println("Digite 5 para listar todos os veículos.");  
+            System.out.println("Digite 6 para sair");  
             System.out.println("============================");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
-                if (opcao < 1 || opcao > 6) {  // Atualizado para 6
+                if (opcao < 1 || opcao > 6) { 
                     throw new NumberFormatException();
                 }
             } catch (NumberFormatException e) {
@@ -43,7 +43,7 @@ public class TelaVeiculo {
             } else if (opcao == 4) {
                 this.consultar();
             } else if (opcao == 5) {
-                this.listarTodos();  // Chama o novo método listarTodos
+                this.listarTodos();  
             } else if (opcao != 6) {
                 System.out.println("Invalido");
             }
@@ -67,6 +67,7 @@ public class TelaVeiculo {
                 System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());
                 System.out.println("Ano do modelo: " + veiculo.getAnoModelo());
                 System.out.println("Placa: " + veiculo.getPlaca());
+                System.out.println("Preço: " + veiculo.getPreco());
                 System.out.println("============================");
             }
         }
@@ -81,18 +82,41 @@ public class TelaVeiculo {
                 .anoFabricacao(Integer.parseInt(lerString("ano de fabricação")))
                 .anoModelo(Integer.parseInt(lerString("ano do modelo")))
                 .placa(this.lerString("placa"))
+                .preco(Double.parseDouble(lerString("preço")))
                 .criar();
 
+        IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
+        
         IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
         try {
-            controlador.inserir(veiculo);
+        	controlador.inserir(veiculo);
             System.out.println("Veículo cadastrado com sucesso!");
-            System.out.println("ID do veículo: " + veiculo.getId());  // Exibe o ID gerado
+            System.out.println("ID do veículo: " + veiculo.getId());
+            System.out.println("Preço final do veículo com acessórios: " + veiculoDecorado.getPreco());
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
         }
     }
 
+	 private IVeiculo adicionarAcessorios(IVeiculo veiculo) {
+	        System.out.println("Deseja adicionar algum acessório? (s/n)");
+	        String resposta = scanner.nextLine();
+	        IVeiculo veiculoDecorado = veiculo;
+
+	        while (resposta.equalsIgnoreCase("s")) {
+	            System.out.println("Informe a descrição do acessório:");
+	            String descricao = scanner.nextLine();
+	            System.out.println("Informe o preço do acessório:");
+	            double preco = Double.parseDouble(scanner.nextLine());
+
+	            veiculoDecorado = new BancoDeCouro(veiculoDecorado, preco, descricao);
+
+	            System.out.println("Deseja adicionar outro acessório? (s/n)");
+	            resposta = scanner.nextLine();
+	        }
+
+	        return veiculoDecorado;
+	    }
 
     private void editar() {
         Long id = Long.parseLong(lerString("ID do veículo"));
@@ -103,6 +127,7 @@ public class TelaVeiculo {
         String novaMarca = lerString("nova marca");
         int novoAnoFabricacao = Integer.parseInt(lerString("novo ano de fabricação"));
         int novoAnoModelo = Integer.parseInt(lerString("novo ano do modelo"));
+        double novoPreco = Double.parseDouble(lerString("novo preço"));
         System.out.println("============================");
 
         Veiculo veiculo = new Veiculo.VeiculoBuilder()
@@ -111,6 +136,7 @@ public class TelaVeiculo {
                 .marca(novaMarca)
                 .anoFabricacao(novoAnoFabricacao)
                 .anoModelo(novoAnoModelo)
+                .preco(novoPreco)
                 .placa(null)
                 .criar();
 
@@ -163,6 +189,7 @@ public class TelaVeiculo {
                 System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());
                 System.out.println("Ano do modelo: " + veiculo.getAnoModelo());
                 System.out.println("Placa: " + veiculo.getPlaca());
+                System.out.println("Preço: " + veiculo.getPreco());
                 System.out.println("============================");
             }
         } catch (ExcecaoNegocio e) {

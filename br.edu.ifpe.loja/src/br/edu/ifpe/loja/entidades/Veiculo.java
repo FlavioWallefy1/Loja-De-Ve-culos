@@ -1,44 +1,78 @@
 package br.edu.ifpe.loja.entidades;
 
-public class Veiculo extends EntidadeBase {
+public class Veiculo extends EntidadeBase implements IVeiculo{
 
     private String modelo;
     private String marca;
     private int anoFabricacao;
     private int anoModelo;
     private String placa;
+    private double preco;
 
-    public String getPlaca() {
-        return placa;
+    
+    public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public void setAnoFabricacao(int anoFabricacao) {
+		this.anoFabricacao = anoFabricacao;
+	}
+
+	public void setAnoModelo(int anoModelo) {
+		this.anoModelo = anoModelo;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public Long getId() {
+        return super.getId();
     }
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
+
+    @Override
     public String getModelo() {
         return modelo;
     }
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+
+    @Override
     public String getMarca() {
         return marca;
     }
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+
+    @Override
     public int getAnoFabricacao() {
         return anoFabricacao;
     }
-    public void setAnoFabricacao(int anoFabricacao) {
-        this.anoFabricacao = anoFabricacao;
-    }
+
+    @Override
     public int getAnoModelo() {
         return anoModelo;
     }
-    public void setAnoModelo(int anoModelo) {
-        this.anoModelo = anoModelo;
+
+    @Override
+    public String getPlaca() {
+        return placa;
     }
 
+    @Override
+    public double getPreco() {
+        return preco;
+    }
+    
+    public String getDescricaoAcessorios() {
+        return "";
+    }
+    
+    
     private Veiculo(VeiculoBuilder builder) {
         this.setId(builder.id); // Set the ID
         this.modelo = builder.modelo;
@@ -46,6 +80,7 @@ public class Veiculo extends EntidadeBase {
         this.anoFabricacao = builder.anoFabricacao;
         this.anoModelo = builder.anoModelo;
         this.placa = builder.placa;
+        this.preco = builder.preco;
     }
 
     public static class VeiculoBuilder {
@@ -55,6 +90,7 @@ public class Veiculo extends EntidadeBase {
         private int anoFabricacao;
         private int anoModelo;
         private String placa;
+        private double preco;
 
         public VeiculoBuilder id(Long id) {
             this.id = id;
@@ -83,6 +119,11 @@ public class Veiculo extends EntidadeBase {
 
         public VeiculoBuilder placa(String placa) {
             this.placa = placa;
+            return this;
+        }
+        
+        public VeiculoBuilder preco(double preco) {
+            this.preco = preco;
             return this;
         }
 
