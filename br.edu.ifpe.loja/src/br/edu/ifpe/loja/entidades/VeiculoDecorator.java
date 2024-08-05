@@ -39,7 +39,6 @@ public abstract class VeiculoDecorator implements IVeiculo {
 
     @Override
     public double getPreco() {
-        return veiculo.getPreco();
+        return veiculo.getPreco(); 
     }
- 
 }

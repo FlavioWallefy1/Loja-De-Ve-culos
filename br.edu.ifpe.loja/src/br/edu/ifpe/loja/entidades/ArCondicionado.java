@@ -1,9 +1,9 @@
 package br.edu.ifpe.loja.entidades;
 
-public class BancoDeCouro extends VeiculoDecorator {
-    private double precoAcessorio = 1500.0;
+public class ArCondicionado extends VeiculoDecorator {
+    private double precoAcessorio = 2000.0;
 
-    public BancoDeCouro(IVeiculo veiculo) {
+    public ArCondicionado(IVeiculo veiculo) {
         super(veiculo);
     }
 
