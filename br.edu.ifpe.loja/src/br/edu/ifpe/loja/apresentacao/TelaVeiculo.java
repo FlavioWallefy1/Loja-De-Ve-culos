@@ -5,13 +5,12 @@ import br.edu.ifpe.loja.entidades.BancoDeCouro;
 import br.edu.ifpe.loja.entidades.IVeiculo;
 import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
-import br.edu.ifpe.loja.negocio.FabricaControlador;
-import br.edu.ifpe.loja.negocio.IControladorVeiculo;
 import java.util.List;
 import java.util.Scanner;
 
 public class TelaVeiculo {
     Scanner scanner = new Scanner(System.in);
+    Facade facade = new Facade();
 
     public void exibir() {
         int opcao = 0;
@@ -52,10 +51,8 @@ public class TelaVeiculo {
     }
 
     private void listarTodos() {
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-        List<Veiculo> veiculos = controlador.listarTodos();
+        List<Veiculo> veiculos = facade.listarTodos();
         
-
         if (veiculos.isEmpty()) {
             System.out.println("Nenhum veículo cadastrado.");
         } else {
@@ -83,14 +80,13 @@ public class TelaVeiculo {
                 .preco(Double.parseDouble(lerString("preço")))
                 .criar();
 
-        IVeiculo veiculoDecorado = adicionarAcessorios(veiculoBase);
 
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
+        IVeiculo veiculoDecorado = adicionarAcessorios(veiculoBase);
         try {
-            controlador.inserir(veiculoBase);
+            facade.inserir(veiculoBase);
             System.out.println("Veículo cadastrado com sucesso!");
-            System.out.println("ID do veículo: " + veiculoDecorado.getId());
-            System.out.println("Preço final do veículo com acessórios: " + veiculoDecorado.getPreco());
+            System.out.println("ID do veículo: " + veiculoBase.getId());
+            System.out.println("Preço final do veículo com acessórios: " + veiculoBase.getPreco());
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
         }
@@ -126,7 +122,6 @@ public class TelaVeiculo {
     private void editar() {
         Long id = Long.parseLong(lerString("ID do veículo"));
 
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
         System.out.println("============================");
         String novoModelo = lerString("novo modelo");
         String novaMarca = lerString("nova marca");
@@ -145,7 +140,7 @@ public class TelaVeiculo {
                 .criar();
 
         try {
-            controlador.editar(veiculo);
+            facade.editar(veiculo);
             System.out.println("Veículo editado com sucesso!");
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
@@ -166,10 +161,8 @@ public class TelaVeiculo {
     private void remover() {
         Long id = Long.parseLong(lerString("ID do veículo"));
 
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-
         try {
-            controlador.remover(id);
+            facade.remover(id);
             System.out.println("Veículo removido com sucesso!");
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
@@ -179,10 +172,8 @@ public class TelaVeiculo {
     private void consultar() {
         Long id = Long.parseLong(lerString("ID do veículo"));
 
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-
         try {
-            Veiculo veiculo = controlador.consultar(id);
+            Veiculo veiculo = facade.consultar(id);
             if (veiculo == null) {
                 System.out.println("Nenhum veículo encontrado com o ID informado.");
             } else {
