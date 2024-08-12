@@ -1,10 +1,10 @@
 package br.edu.ifpe.loja.entidades;
 
-public class BancoDeCouro implements IVeiculo {
-    private double precoAcessorio = 1500.0;
+public class Roda implements IVeiculo{
+    private double precoAcessorio = 1000.0;
     private IVeiculo veiculo;
 
-    public BancoDeCouro(IVeiculo veiculo) {
+    public Roda(IVeiculo veiculo) {
         this.veiculo = veiculo;
     }
 

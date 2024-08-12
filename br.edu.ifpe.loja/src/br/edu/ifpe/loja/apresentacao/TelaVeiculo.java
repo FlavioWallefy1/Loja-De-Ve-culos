@@ -2,7 +2,9 @@ package br.edu.ifpe.loja.apresentacao;
 
 import br.edu.ifpe.loja.entidades.ArCondicionado;
 import br.edu.ifpe.loja.entidades.BancoDeCouro;
+import br.edu.ifpe.loja.entidades.CambioAutomatico;
 import br.edu.ifpe.loja.entidades.IVeiculo;
+import br.edu.ifpe.loja.entidades.Roda;
 import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
 import br.edu.ifpe.loja.negocio.FabricaControlador;
@@ -89,7 +91,7 @@ public class TelaVeiculo {
         String placa = this.lerString("placa");
         double preco = this.lerDouble("preço");
 
-        Veiculo veiculoBase = new Veiculo.VeiculoBuilder()
+        Veiculo veiculo = new Veiculo.VeiculoBuilder()
                 .modelo(modelo)
                 .marca(marca)
                 .anoFabricacao(anoFabricacao)
@@ -98,42 +100,16 @@ public class TelaVeiculo {
                 .preco(preco)
                 .criar();
 
-        IVeiculo veiculoDecorado = adicionarAcessorios(veiculoBase);
+                IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
+                veiculo.setPreco(veiculoDecorado.getPreco());
         try {
-            facade.inserir(veiculoBase);
+            facade.inserir(veiculo);
             System.out.println("Veículo cadastrado com sucesso!");
-            System.out.println("ID do veículo: " + veiculoBase.getId());
-            System.out.println("Preço final do veículo com acessórios: " + veiculoBase.getPreco());
+            System.out.println("ID do veículo: " + veiculo.getId());
+            System.out.println("Preço final do veículo com acessórios: " + veiculo.getPreco());
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private IVeiculo adicionarAcessorios(IVeiculo veiculo) {
-        while (true) {
-            System.out.println("Deseja adicionar algum acessório? (s/n)");
-            String resposta = scanner.nextLine();
-            if (resposta.equalsIgnoreCase("n")) {
-                break;
-            }
-
-            System.out.println("Escolha o acessório:");
-            System.out.println("1. Banco de Couro");
-            System.out.println("2. Ar Condicionado");
-            int escolha = Integer.parseInt(scanner.nextLine());
-
-            switch (escolha) {
-                case 1:
-                    veiculo = new BancoDeCouro(veiculo);
-                    break;
-                case 2:
-                    veiculo = new ArCondicionado(veiculo);
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
-            }
-        }
-        return veiculo;
     }
 
     
@@ -167,6 +143,9 @@ public class TelaVeiculo {
                     .preco(novoPreco)
                     .criar();
 
+            IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
+            veiculo.setPreco(veiculoDecorado.getPreco());
+
             try {
                 controlador.editar(veiculo);
                 System.out.println("Veículo editado com sucesso!");
@@ -175,7 +154,7 @@ public class TelaVeiculo {
             }
         }
 
-        
+
     private void remover() {
         Long id = Long.parseLong(lerString("ID do veículo"));
 
@@ -270,6 +249,41 @@ public class TelaVeiculo {
         }
 
         return numero;
+    }
+
+    private IVeiculo adicionarAcessorios(IVeiculo veiculo) {
+        while (true) {
+            System.out.println("Deseja adicionar algum acessório? (s/n)");
+            String resposta = scanner.nextLine();
+            if (resposta.equalsIgnoreCase("n")) {
+                break;
+            }
+
+            System.out.println("Escolha o acessório:");
+            System.out.println("1. Banco de Couro: R$ 1500");
+            System.out.println("2. Ar Condicionado: R$ 2000");
+            System.out.println("3. Cambio Automatico: R$ 5000");
+            System.out.println("4. Roda de liga leve: R$ 1000");
+            int escolha = Integer.parseInt(scanner.nextLine());
+
+            switch (escolha) {
+                case 1:
+                    veiculo = new BancoDeCouro(veiculo);
+                    break;
+                case 2:
+                    veiculo = new ArCondicionado(veiculo);
+                    break;
+                case 3:
+                    veiculo = new CambioAutomatico(veiculo);
+                    break;
+                case 4:
+                    veiculo = new Roda(veiculo);
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+        return veiculo;
     }
 
 }

@@ -1,14 +1,31 @@
 package br.edu.ifpe.loja.entidades;
 
-public class Veiculo extends EntidadeBase implements IVeiculo {
+public class Veiculo extends EntidadeBase implements IVeiculo{
     private String modelo;
     private String marca;
     private int anoFabricacao;
     private int anoModelo;
     private String placa;
     private double preco;
+    private IVeiculo veiculo;
+    
 
-    // Getters e setters para os atributos
+    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa) {
+        super();
+        this.modelo = modelo;
+        this.marca = marca;
+        this.anoFabricacao = anoFabricacao;
+        this.anoModelo = anoModelo;
+    }
+    
+    public IVeiculo getIVeiculo(){
+        return veiculo;
+    }
+
+    public void setIVeiculo(IVeiculo veiculo){
+        this.veiculo = veiculo;
+    }
+
     public String getModelo() {
         return modelo;
     }
@@ -56,6 +73,7 @@ public class Veiculo extends EntidadeBase implements IVeiculo {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
 
     // Construtor privado para o Builder
     private Veiculo(VeiculoBuilder builder) {
