@@ -7,6 +7,7 @@ import br.edu.ifpe.loja.entidades.IVeiculo;
 import br.edu.ifpe.loja.entidades.Roda;
 import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
+import br.edu.ifpe.loja.log.LogLojaVeiculos;
 import br.edu.ifpe.loja.negocio.FabricaControlador;
 import br.edu.ifpe.loja.negocio.IControladorVeiculo;
 
@@ -60,6 +61,7 @@ public class TelaVeiculo {
         
         if (veiculos.isEmpty()) {
             System.out.println("Nenhum veículo cadastrado.");
+            LogLojaVeiculos.registrarMovimentacao("Erro ao çistar todos os veiculos, Nenhum veiculo cadastrado.");
         } else {
             System.out.println("============================");
             for (Veiculo veiculo : veiculos) {
@@ -72,6 +74,7 @@ public class TelaVeiculo {
                 System.out.println("Preço: " + veiculo.getPreco());
                 System.out.println("============================");
             }
+            LogLojaVeiculos.registrarMovimentacao("Listar todos os veiculos com sucesso.");
         }
     }
 
@@ -107,8 +110,10 @@ public class TelaVeiculo {
             System.out.println("Veículo cadastrado com sucesso!");
             System.out.println("ID do veículo: " + veiculo.getId());
             System.out.println("Preço final do veículo com acessórios: " + veiculo.getPreco());
+            LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca()));
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
+            LogLojaVeiculos.registrarMovimentacao("Erro ao cadstra Veiculo:" + e.getMessage());
         }
     }
 
@@ -149,8 +154,10 @@ public class TelaVeiculo {
             try {
                 controlador.editar(veiculo);
                 System.out.println("Veículo editado com sucesso!");
+                LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo editado com sucesso."));
             } catch (ExcecaoNegocio e) {
                 System.out.println(e.getMessage());
+                LogLojaVeiculos.registrarMovimentacao("Erro ao editar veiculo:"+ e.getMessage());
             }
         }
 
@@ -161,8 +168,10 @@ public class TelaVeiculo {
         try {
             facade.remover(id);
             System.out.println("Veículo removido com sucesso!");
+            LogLojaVeiculos.registrarMovimentacao("veiculo removido com sucesso. ID: " + id);
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
+            LogLojaVeiculos.registrarMovimentacao("Erro ao remover veiculo com ID: "+ id + " - "+ e.getMessage());
         }
     }
 
@@ -173,6 +182,7 @@ public class TelaVeiculo {
             Veiculo veiculo = facade.consultar(id);
             if (veiculo == null) {
                 System.out.println("Nenhum veículo encontrado com o ID informado.");
+                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: "+ id + " não encontrado");
             } else {
                 System.out.println("============================");
                 System.out.println("ID: " + veiculo.getId());
@@ -183,9 +193,11 @@ public class TelaVeiculo {
                 System.out.println("Placa: " + veiculo.getPlaca());
                 System.out.println("Preço: " + veiculo.getPreco());
                 System.out.println("============================");
+                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: "+ id + " encontrado");
             }
         } catch (ExcecaoNegocio e) {
             System.out.println("Erro ao consultar veículo: " + e.getMessage());
+            LogLojaVeiculos.registrarMovimentacao("Erro ao consultar veiculo com ID: " + id + " - " + e.getMessage());
         }
     }
 
