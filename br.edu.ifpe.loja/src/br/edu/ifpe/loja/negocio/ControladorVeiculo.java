@@ -1,11 +1,10 @@
 package br.edu.ifpe.loja.negocio;
 
-import java.util.List;
-
 import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
 import br.edu.ifpe.loja.persistencia.FabricaDAO;
 import br.edu.ifpe.loja.persistencia.GenericDAO;
+import java.util.List;
 
 public class ControladorVeiculo implements IControladorVeiculo {
 

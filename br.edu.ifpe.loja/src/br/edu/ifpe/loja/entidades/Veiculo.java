@@ -1,80 +1,83 @@
 package br.edu.ifpe.loja.entidades;
 
 public class Veiculo extends EntidadeBase implements IVeiculo{
-
     private String modelo;
     private String marca;
     private int anoFabricacao;
     private int anoModelo;
     private String placa;
     private double preco;
-
+    private IVeiculo veiculo;
     
-    public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
-
-	public void setAnoFabricacao(int anoFabricacao) {
-		this.anoFabricacao = anoFabricacao;
-	}
-
-	public void setAnoModelo(int anoModelo) {
-		this.anoModelo = anoModelo;
-	}
-
-	public void setPlaca(String placa) {
-		this.placa = placa;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-
-	public Long getId() {
-        return super.getId();
+    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa) {
+        super();
+        this.modelo = modelo;
+        this.marca = marca;
+        this.anoFabricacao = anoFabricacao;
+        this.anoModelo = anoModelo;
+    }
+    
+    public IVeiculo getIVeiculo(){
+        return veiculo;
     }
 
-    @Override
+    public void setIVeiculo(IVeiculo veiculo){
+        this.veiculo = veiculo;
+    }
+
     public String getModelo() {
         return modelo;
     }
 
-    @Override
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
     public String getMarca() {
         return marca;
     }
 
-    @Override
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public int getAnoFabricacao() {
         return anoFabricacao;
     }
 
-    @Override
+    public void setAnoFabricacao(int anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
+    }
+
     public int getAnoModelo() {
         return anoModelo;
     }
 
-    @Override
+    public void setAnoModelo(int anoModelo) {
+        this.anoModelo = anoModelo;
+    }
+
     public String getPlaca() {
         return placa;
     }
 
-    @Override
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
     public double getPreco() {
         return preco;
     }
-    
-    public String getDescricaoAcessorios() {
-        return "";
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
-    
-    
+
+
+    // Construtor privado para o Builder
     private Veiculo(VeiculoBuilder builder) {
-        this.setId(builder.id); // Set the ID
+        this.setId(builder.id);
         this.modelo = builder.modelo;
         this.marca = builder.marca;
         this.anoFabricacao = builder.anoFabricacao;
@@ -83,6 +86,7 @@ public class Veiculo extends EntidadeBase implements IVeiculo{
         this.preco = builder.preco;
     }
 
+    // Classe interna Builder
     public static class VeiculoBuilder {
         private Long id;
         private String modelo;
@@ -121,7 +125,7 @@ public class Veiculo extends EntidadeBase implements IVeiculo{
             this.placa = placa;
             return this;
         }
-        
+
         public VeiculoBuilder preco(double preco) {
             this.preco = preco;
             return this;
