@@ -1,14 +1,4 @@
 package br.edu.ifpe.loja.apresentacao;
-<<<<<<< HEAD
-
-import br.edu.ifpe.loja.entidades.ArCondicionado;
-import br.edu.ifpe.loja.entidades.BancoDeCouro;
-import br.edu.ifpe.loja.entidades.IVeiculo;
-import br.edu.ifpe.loja.entidades.Veiculo;
-import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
-import br.edu.ifpe.loja.negocio.FabricaControlador;
-import br.edu.ifpe.loja.negocio.IControladorVeiculo;
-=======
 
 import br.edu.ifpe.loja.entidades.ArCondicionado;
 import br.edu.ifpe.loja.entidades.BancoDeCouro;
@@ -21,7 +11,6 @@ import br.edu.ifpe.loja.log.LogLojaVeiculos;
 import br.edu.ifpe.loja.negocio.FabricaControlador;
 import br.edu.ifpe.loja.negocio.IControladorVeiculo;
 
->>>>>>> decorator
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,14 +57,8 @@ public class TelaVeiculo {
     }
 
     private void listarTodos() {
-<<<<<<< HEAD
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-        List<Veiculo> veiculos = controlador.listarTodos();
-
-=======
         List<Veiculo> veiculos = facade.listarTodos();
         
->>>>>>> decorator
         if (veiculos.isEmpty()) {
             System.out.println("Nenhum veículo cadastrado.");
             LogLojaVeiculos.registrarMovimentacao("Erro ao çistar todos os veiculos, Nenhum veiculo cadastrado.");
@@ -91,104 +74,6 @@ public class TelaVeiculo {
                 System.out.println("Preço: " + veiculo.getPreco());
                 System.out.println("============================");
             }
-<<<<<<< HEAD
-        }
-    }
-
-    private void inserir() {
-        String modelo = this.lerString("modelo");
-        String marca = this.lerString("marca");
-        int anoFabricacao = this.lerInt("ano de fabricação");
-        int anoModelo;
-
-        do {
-            anoModelo = this.lerInt("ano do modelo");
-            if (anoModelo < anoFabricacao || anoModelo > anoFabricacao + 1) {
-                System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
-            }
-        } while (anoModelo < anoFabricacao || anoModelo > anoFabricacao + 1);
-
-        String placa = this.lerString("placa");
-        double preco = this.lerDouble("preço");
-
-        Veiculo veiculoBase = new Veiculo.VeiculoBuilder()
-                .modelo(modelo)
-                .marca(marca)
-                .anoFabricacao(anoFabricacao)
-                .anoModelo(anoModelo)
-                .placa(placa)
-                .preco(preco)
-                .criar();
-
-        IVeiculo veiculoDecorado = adicionarAcessorios(veiculoBase);
-
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-        try {
-            controlador.inserir(veiculoBase);
-            System.out.println("Veículo cadastrado com sucesso!");
-            System.out.println("ID do veículo: " + veiculoDecorado.getId());
-            System.out.println("Preço final do veículo com acessórios: " + veiculoDecorado.getPreco());
-        } catch (ExcecaoNegocio e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private IVeiculo adicionarAcessorios(IVeiculo veiculo) {
-        while (true) {
-            System.out.println("Deseja adicionar algum acessório? (s/n)");
-            String resposta = scanner.nextLine();
-            if (resposta.equalsIgnoreCase("n")) {
-                break;
-            }
-
-            System.out.println("Escolha o acessório:");
-            System.out.println("1. Banco de Couro");
-            System.out.println("2. Ar Condicionado");
-            int escolha = this.lerInt("opção");
-
-            switch (escolha) {
-                case 1:
-                    veiculo = new BancoDeCouro(veiculo);
-                    break;
-                case 2:
-                    veiculo = new ArCondicionado(veiculo);
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
-            }
-        }
-        return veiculo;
-    }
-
-    private void editar() {
-        Long id = this.lerLong("ID do veículo");
-
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-        System.out.println("============================");
-        String novoModelo = lerString("novo modelo");
-        String novaMarca = lerString("nova marca");
-        int novoAnoFabricacao = this.lerInt("novo ano de fabricação");
-        int novoAnoModelo;
-
-        do {
-            novoAnoModelo = this.lerInt("novo ano do modelo");
-            if (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1) {
-                System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
-            }
-        } while (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1);
-
-        double novoPreco = this.lerDouble("novo preço");
-        System.out.println("============================");
-
-        Veiculo veiculo = new Veiculo.VeiculoBuilder()
-                .id(id)
-                .modelo(novoModelo)
-                .marca(novaMarca)
-                .anoFabricacao(novoAnoFabricacao)
-                .anoModelo(novoAnoModelo)
-                .placa(null)
-                .preco(novoPreco)
-=======
             LogLojaVeiculos.registrarMovimentacao("Listar todos os veiculos com sucesso.");
         }
     }
@@ -216,7 +101,6 @@ public class TelaVeiculo {
                 .anoModelo(anoModelo)
                 .placa(placa)
                 .preco(preco)
->>>>>>> decorator
                 .criar();
 
                 IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
@@ -331,7 +215,6 @@ public class TelaVeiculo {
     private int lerInt(String nomeAtributo) {
         int numero = 0;
         boolean valido = false;
-<<<<<<< HEAD
 
         while (!valido) {
             try {
@@ -344,91 +227,6 @@ public class TelaVeiculo {
         }
 
         return numero;
-    }
-
-    private double lerDouble(String nomeAtributo) {
-        double numero = 0.0;
-        boolean valido = false;
-
-        while (!valido) {
-            try {
-                System.out.println("Informe: " + nomeAtributo + " do veículo: ");
-                numero = Double.parseDouble(scanner.nextLine());
-                valido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Valor inválido! Por favor, insira um número decimal.");
-            }
-        }
-
-        return numero;
-    }
-
-    private Long lerLong(String nomeAtributo) {
-        Long numero = 0L;
-        boolean valido = false;
-
-        while (!valido) {
-            try {
-                System.out.println("Informe: " + nomeAtributo + " do veículo: ");
-                numero = Long.parseLong(scanner.nextLine());
-                valido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Valor inválido! Por favor, insira um número.");
-            }
-        }
-
-        return numero;
-    }
-
-    private void remover() {
-        Long id = this.lerLong("ID do veículo");
-
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-
-        try {
-            controlador.remover(id);
-            System.out.println("Veículo removido com sucesso!");
-        } catch (ExcecaoNegocio e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void consultar() {
-        Long id = this.lerLong("ID do veículo");
-
-        IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
-
-        try {
-            Veiculo veiculo = controlador.consultar(id);
-            if (veiculo == null) {
-                System.out.println("Nenhum veículo encontrado com o ID informado.");
-            } else {
-                System.out.println("============================");
-                System.out.println("ID: " + veiculo.getId());
-                System.out.println("Modelo: " + veiculo.getModelo());
-                System.out.println("Marca: " + veiculo.getMarca());
-                System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());
-                System.out.println("Ano do modelo: " + veiculo.getAnoModelo());
-                System.out.println("Placa: " + veiculo.getPlaca());
-                System.out.println("Preço: " + veiculo.getPreco());
-                System.out.println("============================");
-=======
-
-        while (!valido) {
-            try {
-                System.out.println("Informe: " + nomeAtributo + " do veículo: ");
-                numero = Integer.parseInt(scanner.nextLine());
-                valido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Valor inválido! Por favor, insira um número inteiro.");
->>>>>>> decorator
-            }
-        }
-<<<<<<< HEAD
-=======
-
-        return numero;
->>>>>>> decorator
     }
 
     private double lerDouble(String nomeAtributo) {
@@ -501,4 +299,3 @@ public class TelaVeiculo {
     }
 
 }
-1
