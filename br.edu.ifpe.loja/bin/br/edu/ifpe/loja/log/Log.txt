@@ -6,3 +6,4 @@
 2024-08-12 16:53:39 - Erro ao editar veiculo:Esse veículo não está cadastrado!
 2024-08-12 16:53:47 - Erro ao consultar veiculo com ID: 3 - Veículo não encontrado!
 2024-08-13 12:07:19 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: gol
+2024-08-13 12:30:10 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chevrolet, Preço: 34500.0

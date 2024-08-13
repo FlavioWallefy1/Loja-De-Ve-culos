@@ -1,11 +1,9 @@
-package br.edu.ifpe.loja.apresentacao;
+package br.edu.ifpe.loja.negocio;
 
 import java.util.List;
 
 import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
-import br.edu.ifpe.loja.negocio.ControladorVeiculo;
-import br.edu.ifpe.loja.negocio.IControladorVeiculo;
 
 public class Facade {
 

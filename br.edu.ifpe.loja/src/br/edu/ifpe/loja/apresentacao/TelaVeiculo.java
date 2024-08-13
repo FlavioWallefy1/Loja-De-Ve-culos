@@ -9,6 +9,7 @@ import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
 import br.edu.ifpe.loja.log.LogLojaVeiculos;
 import br.edu.ifpe.loja.negocio.FabricaControlador;
+import br.edu.ifpe.loja.negocio.Facade;
 import br.edu.ifpe.loja.negocio.IControladorVeiculo;
 
 import java.util.List;
@@ -41,17 +42,26 @@ public class TelaVeiculo {
                 continue;
             }
 
-            if (opcao == 1) {
-                this.inserir();
-            } else if (opcao == 2) {
-                this.editar();
-            } else if (opcao == 3) {
-                this.remover();
-            } else if (opcao == 4) {
-                this.consultar();
-            } else if (opcao == 5) {
-                this.listarTodos();
+            switch (opcao) {
+                case 1:
+                    this.inserir();
+                    break;
+                case 2:
+                    this.editar();
+                    break;
+                case 3:
+                    this.remover();
+                    break;
+                case 4:
+                    this.consultar();
+                    break;
+                case 5:
+                    this.listarTodos();
+                    break;
+                default:
+                    break;
             }
+
         }
         System.out.println("Até a próxima");
     }
@@ -110,7 +120,7 @@ public class TelaVeiculo {
             System.out.println("Veículo cadastrado com sucesso!");
             System.out.println("ID do veículo: " + veiculo.getId());
             System.out.println("Preço final do veículo com acessórios: " + veiculo.getPreco());
-            LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca()));
+            LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s, Preço: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca(), veiculo.getPreco()));
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
             LogLojaVeiculos.registrarMovimentacao("Erro ao cadstra Veiculo:" + e.getMessage());
