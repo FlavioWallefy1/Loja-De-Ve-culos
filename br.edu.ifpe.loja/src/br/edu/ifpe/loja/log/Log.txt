@@ -5,3 +5,8 @@
 2024-08-12 16:53:12 - Listar todos os veiculos com sucesso.
 2024-08-12 16:53:39 - Erro ao editar veiculo:Esse veículo não está cadastrado!
 2024-08-12 16:53:47 - Erro ao consultar veiculo com ID: 3 - Veículo não encontrado!
+2024-08-12 17:37:51 - Veiculo cadastrado com sucesso. ID: 1, Modelo: gt3rs, Marca: porshe
+2024-08-12 17:38:08 - Veiculo com ID: 1 encontrado
+2024-08-12 17:39:12 - Veiculo editado com sucesso.
+2024-08-12 17:39:20 - Listar todos os veiculos com sucesso.
+2024-08-13 12:04:34 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: gol
