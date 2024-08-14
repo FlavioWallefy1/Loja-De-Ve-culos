@@ -1,6 +1,6 @@
 package br.edu.ifpe.loja.entidades;
 
-public class Veiculo extends EntidadeBase implements IVeiculo{
+public abstract class Veiculo extends EntidadeBase implements IVeiculo{
     private String modelo;
     private String marca;
     private int anoFabricacao;
@@ -10,12 +10,14 @@ public class Veiculo extends EntidadeBase implements IVeiculo{
     private IVeiculo veiculo;
     
 
-    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa) {
+    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa, double preco) {
         super();
         this.modelo = modelo;
         this.marca = marca;
         this.anoFabricacao = anoFabricacao;
         this.anoModelo = anoModelo;
+        this.placa = placa;
+        this.preco = preco;
     }
     
     public IVeiculo getIVeiculo(){
@@ -73,6 +75,8 @@ public class Veiculo extends EntidadeBase implements IVeiculo{
     public void setPreco(double preco) {
         this.preco = preco;
     }
+    
+    public abstract String prepararVeiculo();
 
 
     // Construtor privado para o Builder
@@ -86,7 +90,11 @@ public class Veiculo extends EntidadeBase implements IVeiculo{
         this.preco = builder.preco;
     }
 
-    // Classe interna Builder
+    public Veiculo() {
+		// TODO Auto-generated constructor stub
+	}
+
+	// Classe interna Builder
     public static class VeiculoBuilder {
         private Long id;
         private String modelo;
@@ -132,7 +140,14 @@ public class Veiculo extends EntidadeBase implements IVeiculo{
         }
 
         public Veiculo criar() {
-            return new Veiculo(this);
+            return new Veiculo(modelo, marca, anoFabricacao, anoModelo, placa, preco) {
+
+				@Override
+				public String prepararVeiculo() {
+					// TODO Auto-generated method stub
+					return "Preparando veiculo";
+				}
+            	
+            };
         }
-    }
-}
+    }}

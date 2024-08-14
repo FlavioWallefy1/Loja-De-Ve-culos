@@ -7,3 +7,24 @@
 2024-08-12 16:53:47 - Erro ao consultar veiculo com ID: 3 - Ve�culo n�o encontrado!
 2024-08-13 12:07:19 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: gol
 2024-08-13 12:30:10 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chevrolet, Pre�o: 34500.0
+2024-08-13 18:51:37 - Veiculo cadastrado com sucesso. ID: 1, Modelo: null, Marca: null, Preço: 0.0
+2024-08-13 18:52:38 - Veiculo cadastrado com sucesso. ID: 1, Modelo: null, Marca: null, Preço: 0.0
+2024-08-13 19:04:39 - Veículo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 22000.0
+2024-08-13 19:04:45 - Veículo com ID: 1 encontrado.
+2024-08-13 19:07:34 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 22000.0
+2024-08-13 19:07:42 - Veículo com ID: 1 encontrado.
+2024-08-13 19:23:36 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 22000.0
+2024-08-13 20:34:21 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 21500.0
+2024-08-13 20:58:58 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 22000.0
+2024-08-13 20:59:09 - Veiculo com ID: 1 encontrado
+2024-08-13 21:00:15 - Veiculo cadastrado com sucesso. ID: 1, Modelo: sad, Marca: das, Preço: 5000.0
+2024-08-13 21:00:38 - Veiculo com ID: 1 encontrado
+2024-08-13 21:03:55 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 25000.0
+2024-08-13 21:04:29 - Erro ao editar veículo:Esse veículo não está cadastrado!
+2024-08-13 21:14:08 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 21500.0
+2024-08-13 21:14:53 - Erro ao editar veiculo:Esse veículo não está cadastrado!
+2024-08-13 21:15:09 - Veiculo com ID: 1 encontrado
+2024-08-13 21:26:19 - Veiculo com ID: 1 encontrado
+2024-08-13 21:29:47 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 21500.0
+2024-08-13 21:29:57 - Veiculo com ID: 1 encontrado
+2024-08-13 21:30:40 - Erro ao editar veiculo:Esse veículo não está cadastrado!

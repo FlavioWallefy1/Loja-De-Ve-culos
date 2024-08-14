@@ -3,7 +3,9 @@ package br.edu.ifpe.loja.apresentacao;
 import br.edu.ifpe.loja.entidades.ArCondicionado;
 import br.edu.ifpe.loja.entidades.BancoDeCouro;
 import br.edu.ifpe.loja.entidades.CambioAutomatico;
+import br.edu.ifpe.loja.entidades.Carro;
 import br.edu.ifpe.loja.entidades.IVeiculo;
+import br.edu.ifpe.loja.entidades.Moto;
 import br.edu.ifpe.loja.entidades.Roda;
 import br.edu.ifpe.loja.entidades.Veiculo;
 import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
@@ -68,27 +70,28 @@ public class TelaVeiculo {
 
     private void listarTodos() {
         List<Veiculo> veiculos = facade.listarTodos();
-        
+
         if (veiculos.isEmpty()) {
             System.out.println("Nenhum veículo cadastrado.");
-            LogLojaVeiculos.registrarMovimentacao("Erro ao çistar todos os veiculos, Nenhum veiculo cadastrado.");
+            LogLojaVeiculos.registrarMovimentacao("Erro ao listar todos os veiculos, Nenhum veiculo cadastrado.");
         } else {
             System.out.println("============================");
             for (Veiculo veiculo : veiculos) {
-                System.out.println("ID: " + veiculo.getId());
-                System.out.println("Modelo: " + veiculo.getModelo());
-                System.out.println("Marca: " + veiculo.getMarca());
-                System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());
-                System.out.println("Ano do modelo: " + veiculo.getAnoModelo());
-                System.out.println("Placa: " + veiculo.getPlaca());
-                System.out.println("Preço: " + veiculo.getPreco());
+                exibirInformacoesVeiculo(veiculo);
                 System.out.println("============================");
             }
             LogLojaVeiculos.registrarMovimentacao("Listar todos os veiculos com sucesso.");
         }
     }
 
+
     private void inserir() {
+        // Escolher o tipo de veículo
+        System.out.println("Escolha o tipo de veículo:");
+        System.out.println("1. Carro");
+        System.out.println("2. Moto");
+        int tipoVeiculo = Integer.parseInt(scanner.nextLine());
+        
         String modelo = this.lerString("modelo");
         String marca = this.lerString("marca");
         int anoFabricacao = this.lerInt("ano de fabricação");
@@ -104,17 +107,19 @@ public class TelaVeiculo {
         String placa = this.lerString("placa");
         double preco = this.lerDouble("preço");
 
-        Veiculo veiculo = new Veiculo.VeiculoBuilder()
-                .modelo(modelo)
-                .marca(marca)
-                .anoFabricacao(anoFabricacao)
-                .anoModelo(anoModelo)
-                .placa(placa)
-                .preco(preco)
-                .criar();
+        Veiculo veiculo;
+        if (tipoVeiculo == 1) {
+            veiculo = new Carro(modelo, marca, anoFabricacao, anoModelo, placa, preco);
+        } else if (tipoVeiculo == 2) {
+            veiculo = new Moto(modelo, marca, anoFabricacao, anoModelo, placa, preco);
+        } else {
+            System.out.println("Tipo de veículo inválido. O veículo será criado como um carro por padrão.");
+            veiculo = new Carro(modelo, marca, anoFabricacao, anoModelo, placa, preco);
+        }
 
-                IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
-                veiculo.setPreco(veiculoDecorado.getPreco());
+        IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
+        veiculo.setPreco(veiculoDecorado.getPreco());
+
         try {
             facade.inserir(veiculo);
             System.out.println("Veículo cadastrado com sucesso!");
@@ -123,9 +128,10 @@ public class TelaVeiculo {
             LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s, Preço: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca(), veiculo.getPreco()));
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
-            LogLojaVeiculos.registrarMovimentacao("Erro ao cadstra Veiculo:" + e.getMessage());
+            LogLojaVeiculos.registrarMovimentacao("Erro ao cadastrar Veículo:" + e.getMessage());
         }
     }
+
 
     
     private void editar() {
@@ -192,24 +198,38 @@ public class TelaVeiculo {
             Veiculo veiculo = facade.consultar(id);
             if (veiculo == null) {
                 System.out.println("Nenhum veículo encontrado com o ID informado.");
-                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: "+ id + " não encontrado");
+                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: " + id + " não encontrado");
             } else {
                 System.out.println("============================");
-                System.out.println("ID: " + veiculo.getId());
-                System.out.println("Modelo: " + veiculo.getModelo());
-                System.out.println("Marca: " + veiculo.getMarca());
-                System.out.println("Ano de fabricação: " + veiculo.getAnoFabricacao());
-                System.out.println("Ano do modelo: " + veiculo.getAnoModelo());
-                System.out.println("Placa: " + veiculo.getPlaca());
-                System.out.println("Preço: " + veiculo.getPreco());
+                exibirInformacoesVeiculo(veiculo);
                 System.out.println("============================");
-                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: "+ id + " encontrado");
+                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: " + id + " encontrado");
             }
         } catch (ExcecaoNegocio e) {
             System.out.println("Erro ao consultar veículo: " + e.getMessage());
             LogLojaVeiculos.registrarMovimentacao("Erro ao consultar veiculo com ID: " + id + " - " + e.getMessage());
         }
     }
+
+    
+    private void exibirInformacoesVeiculo(Veiculo veiculo) {
+        System.out.println("ID: " + veiculo.getId());
+        System.out.println("Modelo: " + veiculo.getModelo());
+        System.out.println("Marca: " + veiculo.getMarca());
+        System.out.println("Ano: " + veiculo.getAnoModelo());
+        System.out.println("Preço Base: " + veiculo.getPreco());
+
+        if (veiculo instanceof Carro) {
+            System.out.println("Tipo: Carro");
+            // Exibe informações específicas do carro, se houver
+        } else if (veiculo instanceof Moto) {
+            System.out.println("Tipo: Moto");
+            // Exibe informações específicas da moto, se houver
+        }
+
+        System.out.println("Método de Preparação: " + veiculo.prepararVeiculo());
+        
+        }
 
     private String lerString(String nomeAtributo) {
         String entrada = "";
