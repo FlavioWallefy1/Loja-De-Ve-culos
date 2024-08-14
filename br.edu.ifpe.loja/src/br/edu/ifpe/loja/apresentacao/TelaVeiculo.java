@@ -135,47 +135,42 @@ public class TelaVeiculo {
 
     
     private void editar() {
-            Long id = this.lerLong("ID do veículo");
+        Long id = this.lerLong("ID do veículo");
 
-            IControladorVeiculo controlador = FabricaControlador.getControladorVeiculo();
+        try {
+            Veiculo veiculoExistente = facade.consultar(id);
+            if (veiculoExistente == null) {
+                System.out.println("Esse veículo não está cadastrado!");
+                return;
+            }
+
             System.out.println("============================");
             String novoModelo = lerString("novo modelo");
             String novaMarca = lerString("nova marca");
             int novoAnoFabricacao = this.lerInt("novo ano de fabricação");
-            int novoAnoModelo;
-
-            do {
-                novoAnoModelo = this.lerInt("novo ano do modelo");
-                if (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1) {
-                    System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
-                }
-            } while (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1);
+            int novoAnoModelo = this.lerInt("novo ano do modelo");
 
             double novoPreco = this.lerDouble("novo preço");
             System.out.println("============================");
 
-            Veiculo veiculo = new Veiculo.VeiculoBuilder()
-                    .id(id)
-                    .modelo(novoModelo)
-                    .marca(novaMarca)
-                    .anoFabricacao(novoAnoFabricacao)
-                    .anoModelo(novoAnoModelo)
-                    .placa(null)
-                    .preco(novoPreco)
-                    .criar();
+            veiculoExistente.setModelo(novoModelo);
+            veiculoExistente.setMarca(novaMarca);
+            veiculoExistente.setAnoFabricacao(novoAnoFabricacao);
+            veiculoExistente.setAnoModelo(novoAnoModelo);
+            veiculoExistente.setPreco(novoPreco);
 
-            IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
-            veiculo.setPreco(veiculoDecorado.getPreco());
+            IVeiculo veiculoDecorado = adicionarAcessorios(veiculoExistente);
+            veiculoExistente.setPreco(veiculoDecorado.getPreco());
 
-            try {
-                controlador.editar(veiculo);
-                System.out.println("Veículo editado com sucesso!");
-                LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo editado com sucesso."));
-            } catch (ExcecaoNegocio e) {
-                System.out.println(e.getMessage());
-                LogLojaVeiculos.registrarMovimentacao("Erro ao editar veiculo:"+ e.getMessage());
-            }
+            facade.editar(veiculoExistente);
+            System.out.println("Veículo editado com sucesso!");
+            LogLojaVeiculos.registrarMovimentacao("Veículo editado com sucesso. ID: " + veiculoExistente.getId());
+        } catch (ExcecaoNegocio e) {
+            System.out.println("Erro ao editar veículo: " + e.getMessage());
+            LogLojaVeiculos.registrarMovimentacao("Erro ao editar veículo: " + e.getMessage());
         }
+    }
+
 
 
     private void remover() {
