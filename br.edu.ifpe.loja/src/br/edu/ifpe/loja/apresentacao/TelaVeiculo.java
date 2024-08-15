@@ -90,12 +90,29 @@ public class TelaVeiculo {
 
 
     private void inserir() {
-        // Escolher o tipo de veículo
-        System.out.println("Escolha o tipo de veículo:");
-        System.out.println("1. Carro");
-        System.out.println("2. Moto");
-        int tipoVeiculo = Integer.parseInt(scanner.nextLine());
+        int tipoVeiculo = 0;
+        boolean entradaValida = false;
         
+        // Loop para garantir que o usuário insira uma opção válida para o tipo de veículo
+        while (!entradaValida) {
+            try {
+                System.out.println("Escolha o tipo de veículo:");
+                System.out.println("1. Carro");
+                System.out.println("2. Moto");
+                tipoVeiculo = Integer.parseInt(scanner.nextLine());
+
+                if (tipoVeiculo < 1 || tipoVeiculo > 2) {
+                    throw new ExcecaoNegocio("Tipo de veículo inválido. Escolha 1 para Carro ou 2 para Moto.");
+                }
+                
+                entradaValida = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida! Por favor, insira 1 para Carro ou 2 para Moto.");
+            } catch (ExcecaoNegocio e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
         String modelo = this.lerString("modelo");
         String marca = this.lerString("marca");
         int anoFabricacao = this.lerInt("ano de fabricação");
@@ -114,11 +131,8 @@ public class TelaVeiculo {
         Veiculo veiculo;
         if (tipoVeiculo == 1) {
             veiculo = new Carro(modelo, marca, anoFabricacao, anoModelo, placa, preco);
-        } else if (tipoVeiculo == 2) {
-            veiculo = new Moto(modelo, marca, anoFabricacao, anoModelo, placa, preco);
         } else {
-            System.out.println("Tipo de veículo inválido. O veículo será criado como um carro por padrão.");
-            veiculo = new Carro(modelo, marca, anoFabricacao, anoModelo, placa, preco);
+            veiculo = new Moto(modelo, marca, anoFabricacao, anoModelo, placa, preco);
         }
 
         IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
@@ -135,6 +149,7 @@ public class TelaVeiculo {
             LogLojaVeiculos.registrarMovimentacao("Erro ao cadastrar Veículo:" + e.getMessage());
         }
     }
+
 
 
     

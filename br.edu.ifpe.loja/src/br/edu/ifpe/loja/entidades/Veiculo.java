@@ -78,22 +78,6 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
     
     public abstract String prepararVeiculo();
 
-
-    // Construtor privado para o Builder
-    private Veiculo(VeiculoBuilder builder) {
-        this.setId(builder.id);
-        this.modelo = builder.modelo;
-        this.marca = builder.marca;
-        this.anoFabricacao = builder.anoFabricacao;
-        this.anoModelo = builder.anoModelo;
-        this.placa = builder.placa;
-        this.preco = builder.preco;
-    }
-
-    public Veiculo() {
-		// TODO Auto-generated constructor stub
-	}
-
 	// Classe interna Builder
     public static class VeiculoBuilder {
         private Long id;
