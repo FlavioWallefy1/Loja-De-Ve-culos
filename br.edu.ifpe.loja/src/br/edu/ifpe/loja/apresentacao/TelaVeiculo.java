@@ -21,6 +21,7 @@ public class TelaVeiculo {
     Scanner scanner = new Scanner(System.in);
     Facade facade = new Facade();
 
+    
     public void exibir() {
         int opcao = 0;
         while (opcao != 6) {
@@ -68,6 +69,8 @@ public class TelaVeiculo {
         System.out.println("Até a próxima");
     }
 
+
+
     private void listarTodos() {
         List<Veiculo> veiculos = facade.listarTodos();
 
@@ -83,6 +86,7 @@ public class TelaVeiculo {
             LogLojaVeiculos.registrarMovimentacao("Listar todos os veiculos com sucesso.");
         }
     }
+
 
 
     private void inserir() {
@@ -148,8 +152,16 @@ public class TelaVeiculo {
             String novoModelo = lerString("novo modelo");
             String novaMarca = lerString("nova marca");
             int novoAnoFabricacao = this.lerInt("novo ano de fabricação");
-            int novoAnoModelo = this.lerInt("novo ano do modelo");
+            int novoAnoModelo;
 
+            do {
+                novoAnoModelo = this.lerInt("novo ano do modelo");
+                if (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1) {
+                    System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
+                }
+            } while (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1);
+
+ 
             double novoPreco = this.lerDouble("novo preço");
             System.out.println("============================");
 
@@ -186,6 +198,8 @@ public class TelaVeiculo {
         }
     }
 
+
+
     private void consultar() {
         Long id = Long.parseLong(lerString("ID do veículo"));
 
@@ -207,12 +221,13 @@ public class TelaVeiculo {
     }
 
     
+
     private void exibirInformacoesVeiculo(Veiculo veiculo) {
         System.out.println("ID: " + veiculo.getId());
         System.out.println("Modelo: " + veiculo.getModelo());
         System.out.println("Marca: " + veiculo.getMarca());
         System.out.println("Ano: " + veiculo.getAnoModelo());
-        System.out.println("Preço Base: " + veiculo.getPreco());
+        System.out.println("Preço: " + veiculo.getPreco());
 
         if (veiculo instanceof Carro) {
             System.out.println("Tipo: Carro");
@@ -226,6 +241,8 @@ public class TelaVeiculo {
         
         }
 
+
+
     private String lerString(String nomeAtributo) {
         String entrada = "";
 
@@ -236,6 +253,8 @@ public class TelaVeiculo {
 
         return entrada;
     }
+
+
 
     private int lerInt(String nomeAtributo) {
         int numero = 0;
@@ -254,6 +273,8 @@ public class TelaVeiculo {
         return numero;
     }
 
+
+
     private double lerDouble(String nomeAtributo) {
         double numero = 0.0;
         boolean valido = false;
@@ -271,6 +292,8 @@ public class TelaVeiculo {
         return numero;
     }
 
+
+
     private Long lerLong(String nomeAtributo) {
         Long numero = 0L;
         boolean valido = false;
@@ -287,6 +310,8 @@ public class TelaVeiculo {
 
         return numero;
     }
+
+
 
     private IVeiculo adicionarAcessorios(IVeiculo veiculo) {
         while (true) {
