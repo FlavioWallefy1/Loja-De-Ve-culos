@@ -198,44 +198,51 @@ public class TelaVeiculo {
         }
     }
 
-
-
     private void remover() {
-        Long id = Long.parseLong(lerString("ID do veículo"));
+        Long id = null;
+        try {
+            id = Long.parseLong(lerString("ID do veículo"));
+        } catch (NumberFormatException e) {
+            System.out.println("ID inválido. Por favor, insira um número.");
+            LogLojaVeiculos.registrarMovimentacao("Tentativa de remoção falhou devido a ID inválido.");
+            return;
+        }
 
         try {
             facade.remover(id);
             System.out.println("Veículo removido com sucesso!");
-            LogLojaVeiculos.registrarMovimentacao("veiculo removido com sucesso. ID: " + id);
+            LogLojaVeiculos.registrarMovimentacao("Veículo removido com sucesso. ID: " + id);
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());
-            LogLojaVeiculos.registrarMovimentacao("Erro ao remover veiculo com ID: "+ id + " - "+ e.getMessage());
+            LogLojaVeiculos.registrarMovimentacao("Erro ao remover veículo com ID: " + id + " - " + e.getMessage());
         }
     }
-
-
 
     private void consultar() {
-        Long id = Long.parseLong(lerString("ID do veículo"));
-
         try {
-            Veiculo veiculo = facade.consultar(id);
-            if (veiculo == null) {
-                System.out.println("Nenhum veículo encontrado com o ID informado.");
-                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: " + id + " não encontrado");
-            } else {
-                System.out.println("============================");
-                exibirInformacoesVeiculo(veiculo);
-                System.out.println("============================");
-                LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: " + id + " encontrado");
+            Long id = Long.parseLong(lerString("ID do veículo"));
+
+            try {
+                Veiculo veiculo = facade.consultar(id);
+                if (veiculo == null) {
+                    System.out.println("Nenhum veículo encontrado com o ID informado.");
+                    LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: " + id + " não encontrado");
+                } else {
+                    System.out.println("============================");
+                    exibirInformacoesVeiculo(veiculo);
+                    System.out.println("============================");
+                    LogLojaVeiculos.registrarMovimentacao("Veiculo com ID: " + id + " encontrado");
+                }
+            } catch (ExcecaoNegocio e) {
+                System.out.println("Erro ao consultar veículo: " + e.getMessage());
+                LogLojaVeiculos.registrarMovimentacao("Erro ao consultar veiculo com ID: " + id + " - " + e.getMessage());
             }
-        } catch (ExcecaoNegocio e) {
-            System.out.println("Erro ao consultar veículo: " + e.getMessage());
-            LogLojaVeiculos.registrarMovimentacao("Erro ao consultar veiculo com ID: " + id + " - " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("ID inválido! Por favor, digite um número.");
+            LogLojaVeiculos.registrarMovimentacao("Erro: ID inválido digitado");
         }
     }
 
-    
 
     private void exibirInformacoesVeiculo(Veiculo veiculo) {
         System.out.println("ID: " + veiculo.getId());

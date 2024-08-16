@@ -64,3 +64,14 @@
 2024-08-15 16:54:03 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 25000.0
 2024-08-15 16:54:44 - Veículo editado com sucesso. ID: 1
 2024-08-15 16:54:53 - Listar todos os veiculos com sucesso.
+2024-08-16 19:15:09 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 1, Marca: 1, Preço: 1501.0
+2024-08-16 19:15:35 - Erro ao remover veiculo com ID: 6 - Esse veículo não está cadastrado!
+2024-08-16 19:21:02 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 25000.0
+2024-08-16 19:21:15 - Erro ao remover veículo com ID: 4 - Esse veículo não está cadastrado!
+2024-08-16 19:21:22 - Tentativa de remoção falhou devido a ID inválido.
+2024-08-16 19:24:45 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2000.0
+2024-08-16 19:25:02 - Erro ao consultar veiculo com ID: 4 - Veículo não encontrado!
+2024-08-16 19:28:45 - Veiculo cadastrado com sucesso. ID: 1, Modelo: biz, Marca: honda, Preço: 20000.0
+2024-08-16 19:28:58 - Erro ao consultar veiculo com ID: 4 - Veículo não encontrado!
+2024-08-16 19:29:04 - Erro: ID inválido digitado
+2024-08-16 19:29:36 - Erro ao editar veículo: Veículo não encontrado!
