@@ -142,7 +142,7 @@ public class TelaVeiculo {
             facade.inserir(veiculo);
             System.out.println("Veículo cadastrado com sucesso!");
             System.out.println("ID do veículo: " + veiculo.getId());
-            System.out.println("Preço final do veículo com acessórios: " + veiculo.getPreco());
+            System.out.println("Preço final do veículo: " + veiculo.getPreco());
             LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s, Preço: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca(), veiculo.getPreco()));
         } catch (ExcecaoNegocio e) {
             System.out.println(e.getMessage());

@@ -81,3 +81,5 @@
 2024-08-16 19:43:19 - Erro: ID inválido digitado
 2024-08-16 19:43:40 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 1, Marca: 1, Preço: 1.0
 2024-08-16 19:44:58 - Veiculo com ID: 1 encontrado
+2024-08-16 20:06:58 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 2, Marca: 1, Preço: 1.0
+2024-08-16 20:08:23 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 1, Marca: 1, Preço: 1.0
