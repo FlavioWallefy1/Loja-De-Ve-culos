@@ -330,37 +330,39 @@ public class TelaVeiculo {
 
     private IVeiculo adicionarAcessorios(IVeiculo veiculo) {
         while (true) {
-            System.out.println("Deseja adicionar algum acessório? (s/n)");
-            String resposta = scanner.nextLine();
-            if (resposta.equalsIgnoreCase("n")) {
-                break;
-            }
-
-            System.out.println("Escolha o acessório:");
-            System.out.println("1. Banco de Couro: R$ 1500");
-            System.out.println("2. Ar Condicionado: R$ 2000");
-            System.out.println("3. Cambio Automatico: R$ 5000");
-            System.out.println("4. Roda de liga leve: R$ 1000");
-            int escolha = Integer.parseInt(scanner.nextLine());
-
-            switch (escolha) {
-                case 1:
-                    veiculo = new BancoDeCouro(veiculo);
-                    break;
-                case 2:
-                    veiculo = new ArCondicionado(veiculo);
-                    break;
-                case 3:
-                    veiculo = new CambioAutomatico(veiculo);
-                    break;
-                case 4:
-                    veiculo = new Roda(veiculo);
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
+            try {
+                System.out.println("Escolha o acessório:");
+                System.out.println("1. Banco de Couro: R$ 1500");
+                System.out.println("2. Ar Condicionado: R$ 2000");
+                System.out.println("3. Cambio Automatico: R$ 5000");
+                System.out.println("4. Roda de liga leve: R$ 1000");
+                System.out.println("0. Finalizar");
+                int escolha = Integer.parseInt(scanner.nextLine());
+    
+                switch (escolha) {
+                    case 0:
+                        System.out.println("Finalizado a adição de comportamentos.");
+                        return veiculo;
+                    case 1:
+                        veiculo = new BancoDeCouro(veiculo);
+                        break;
+                    case 2:
+                        veiculo = new ArCondicionado(veiculo);
+                        break;
+                    case 3:
+                        veiculo = new CambioAutomatico(veiculo);
+                        break;
+                    case 4:
+                        veiculo = new Roda(veiculo);
+                        break;
+                    default:
+                        System.out.println("Opção inválida.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, insira um número.");
             }
         }
-        return veiculo;
     }
+    
 
 }
