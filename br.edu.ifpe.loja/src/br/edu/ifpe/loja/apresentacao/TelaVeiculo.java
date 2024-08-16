@@ -269,7 +269,7 @@ public class TelaVeiculo {
         String entrada = "";
 
         while (entrada.trim().isEmpty()) {
-            System.out.println("Informe: " + nomeAtributo + " do veículo: ");
+            System.out.println("Informe: " + nomeAtributo);
             entrada = scanner.nextLine();
         }
 
@@ -284,7 +284,7 @@ public class TelaVeiculo {
 
         while (!valido) {
             try {
-                System.out.println("Informe: " + nomeAtributo + " do veículo: ");
+                System.out.println("Informe: " + nomeAtributo);
                 numero = Integer.parseInt(scanner.nextLine());
                 valido = true;
             } catch (NumberFormatException e) {
@@ -303,7 +303,7 @@ public class TelaVeiculo {
 
         while (!valido) {
             try {
-                System.out.println("Informe: " + nomeAtributo + " do veículo: ");
+                System.out.println("Informe: " + nomeAtributo);
                 numero = Double.parseDouble(scanner.nextLine());
                 valido = true;
             } catch (NumberFormatException e) {
@@ -322,7 +322,7 @@ public class TelaVeiculo {
 
         while (!valido) {
             try {
-                System.out.println("Informe: " + nomeAtributo + " do veículo: ");
+                System.out.println("Informe: " + nomeAtributo);
                 numero = Long.parseLong(scanner.nextLine());
                 valido = true;
             } catch (NumberFormatException e) {

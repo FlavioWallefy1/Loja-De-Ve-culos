@@ -71,3 +71,12 @@
 2024-08-16 19:21:22 - Tentativa de remoção falhou devido a ID inválido.
 2024-08-16 19:24:45 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2000.0
 2024-08-16 19:25:02 - Erro ao consultar veiculo com ID: 4 - Veículo não encontrado!
+2024-08-16 19:28:45 - Veiculo cadastrado com sucesso. ID: 1, Modelo: biz, Marca: honda, Preço: 20000.0
+2024-08-16 19:28:58 - Erro ao consultar veiculo com ID: 4 - Veículo não encontrado!
+2024-08-16 19:29:04 - Erro: ID inválido digitado
+2024-08-16 19:29:36 - Erro ao editar veículo: Veículo não encontrado!
+2024-08-16 19:41:09 - Veiculo cadastrado com sucesso. ID: 1, Modelo: fusca, Marca: chev, Preço: 20000.0
+2024-08-16 19:42:40 - Veiculo cadastrado com sucesso. ID: 1, Modelo: , Marca: , Preço: 1.0
+2024-08-16 19:43:16 - Erro: ID inválido digitado
+2024-08-16 19:43:19 - Erro: ID inválido digitado
+2024-08-16 19:43:40 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 1, Marca: 1, Preço: 1.0
