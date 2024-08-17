@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class TelaVeiculo {
     Scanner scanner = new Scanner(System.in);
-    Facade facade = new Facade();
+    Facade facade = Facade.getInstancia();
 
     
     public void exibir() {
