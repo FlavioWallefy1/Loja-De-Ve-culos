@@ -96,9 +96,7 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         return adapterSinitro.formatarExtenso(dataSinistro);
     }
 
-    public String getDataSinistroSistemaPortugues() {
-        return adapterSinitro.formatarSistemaPortugues(dataSinistro);
-    }
+ 
     
     public abstract String prepararVeiculo();
 

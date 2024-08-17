@@ -119,7 +119,16 @@ public class TelaVeiculo {
 
 		String modelo = this.lerString("modelo");
 		String marca = this.lerString("marca");
-		int anoFabricacao = this.lerInt("ano de fabricação");
+		int anoFabricacao;
+
+		do {
+			anoFabricacao = this.lerInt("ano de fabricação");
+			if (String.valueOf(anoFabricacao).length() != 4) {
+	            System.out.println("Ano de fabricação deve ter 4 dígitos. Por favor, insira novamente.");
+	        } else if (anoFabricacao > LocalDate.now().getYear()) {
+				System.out.println("Ano de fabricação não pode ser maior que o ano atual. Por favor, insira novamente.");
+			}
+		} while (String.valueOf(anoFabricacao).length() != 4 || anoFabricacao > LocalDate.now().getYear());
 
 
 		int anoModelo;
@@ -140,7 +149,7 @@ public class TelaVeiculo {
 				placa = placa.substring(0, 3) + "-" + placa.substring(3);
 			}
 
-
+			
 			if (!ValidadorPlaca.validarPlaca(placa)) {
 				System.out.println("Placa inválida! Por favor, insira uma placa no formato correto (Antigo: AAA-1234 ou Mercosul: AAA1A23).");
 			}
@@ -155,13 +164,13 @@ public class TelaVeiculo {
 		String dataSinistro = null;
 		while (!entrada) {
 			try {
-				System.out.println("O veículo já teve algum sinistro?");
+				System.out.println("O veículo tem algum sinistro?");
 				System.out.println("1. Sim");
 				System.out.println("2. Não");
 				teveSinistro = Integer.parseInt(scanner.nextLine());
 
 				if ( teveSinistro == 1) {
-					dataSinistro = lerDataSinistro();
+					dataSinistro = lerDataSinistro(anoFabricacao);
 				}
 
 				entrada = true;
@@ -210,18 +219,49 @@ private void editar() {
 		System.out.println("============================");
 		String novoModelo = lerString("novo modelo");
 		String novaMarca = lerString("nova marca");
-		int novoAnoFabricacao = this.lerInt("novo ano de fabricação");
+		
+		int novoAnoFabricacao;
+		do {
+			novoAnoFabricacao = this.lerInt("novo ano de fabricação");
+			if (String.valueOf(novoAnoFabricacao).length() != 4) {
+                System.out.println("Ano de fabricação deve ter 4 dígitos. Por favor, insira novamente.");
+            } else if (novoAnoFabricacao > LocalDate.now().getYear()) {
+				System.out.println("Ano de fabricação não pode ser maior que o ano atual. Por favor, insira novamente.");
+			}
+		} while (novoAnoFabricacao > LocalDate.now().getYear());
+		
+		
 		int novoAnoModelo;
-
 		do {
 			novoAnoModelo = this.lerInt("novo ano do modelo");
 			if (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1) {
 				System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
 			}
-		} while (novoAnoModelo < novoAnoFabricacao || novoAnoModelo > novoAnoFabricacao + 1);
+		} while (String.valueOf(novoAnoFabricacao).length() != 4 || novoAnoFabricacao > LocalDate.now().getYear());
 
 
 		double novoPreco = this.lerDouble("novo preço");
+		
+		
+		boolean entrada = false;
+        int teveSinistro = 0;
+        String novaDataSinistro = null;
+        while (!entrada) {
+            try {
+                System.out.println("O veículo tem algum sinistro?");
+                System.out.println("1. Sim");
+                System.out.println("2. Não");
+                teveSinistro = Integer.parseInt(scanner.nextLine());
+
+                if (teveSinistro == 1) {
+                    novaDataSinistro = lerDataSinistro(novoAnoFabricacao);
+                }
+
+                entrada = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida! Por favor, insira 1 para Sim ou 2 para Não.");
+            }
+        }
 		
 		
 		System.out.println("============================");
@@ -231,6 +271,7 @@ private void editar() {
 		veiculoExistente.setAnoFabricacao(novoAnoFabricacao);
 		veiculoExistente.setAnoModelo(novoAnoModelo);
 		veiculoExistente.setPreco(novoPreco);
+		veiculoExistente.setDataSinistro(novaDataSinistro);
 		
 
 
@@ -310,10 +351,9 @@ private void exibirInformacoesVeiculo(Veiculo veiculo) {
 
 	if (veiculo.getDataSinistro() != null) {
 		System.out.println("Data do sinistro: " + veiculo.getDataSinistro());
-		System.out.println("Data do sinistro em portugues: " + veiculo.getDataSinistroSistemaPortugues());
 		System.out.println("Data do sinistro em extenço: " + veiculo.getDataSinistroExtenso());
 
-	} else {
+	}  else {
 		System.out.println("Data do Sinistro: Não houve sinistro");
 	}
 
@@ -393,21 +433,25 @@ private Long lerLong(String nomeAtributo) {
 
 
 
-private String lerDataSinistro() {
+private String lerDataSinistro(int anoFabricacao) {
 	String data = null;
 	boolean valido = false;
 
 	while (!valido) {
 		System.out.println("Digite a data do sinistro (no formato Ano-Mês-Dia): ");
 		String input = scanner.nextLine();
-
+		
 		try {
 			LocalDate dataSinistro = LocalDate.parse(input);
+			int anoSinistro = dataSinistro.getYear();
 			int anoAtual = LocalDate.now().getYear();
+			
 
-			if (dataSinistro.getYear() > anoAtual) {
+			if (anoSinistro > anoAtual) {
 				System.out.println("O ano do sisnitro não pode ser maior que o ano atual.");
-			}  else {
+			} else if (anoSinistro < anoFabricacao) {
+                System.out.println("A data do sinistro não pode ser menor que o ano de fabricação do veículo.");
+            } else {
 				data = input;
 				valido = true;
 			}

@@ -141,3 +141,13 @@
 2024-08-17 15:35:07 - Listar todos os veiculos com sucesso.
 2024-08-17 15:36:32 - Veículo editado com sucesso. ID: 1
 2024-08-17 15:36:36 - Listar todos os veiculos com sucesso.
+2024-08-17 19:50:21 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chevrolet, Preço: 33300.0
+2024-08-17 19:50:25 - Listar todos os veiculos com sucesso.
+2024-08-17 19:51:37 - Veículo editado com sucesso. ID: 1
+2024-08-17 19:51:41 - Listar todos os veiculos com sucesso.
+2024-08-17 19:55:38 - Veiculo cadastrado com sucesso. ID: 1, Modelo: gol, Marca: volks, Preço: 30500.0
+2024-08-17 19:55:42 - Listar todos os veiculos com sucesso.
+2024-08-17 19:56:48 - Veículo editado com sucesso. ID: 1
+2024-08-17 19:56:50 - Listar todos os veiculos com sucesso.
+2024-08-17 20:11:16 - Veiculo cadastrado com sucesso. ID: 1, Modelo: astra, Marca: chevrolet, Preço: 22300.0
+2024-08-17 20:11:28 - Veiculo com ID: 1 encontrado
