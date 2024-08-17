@@ -11,10 +11,6 @@ public interface IControladorVeiculo {
 	
 	void editar (Veiculo veiculo) throws ExcecaoNegocio;
 
-	void remover (String placa) throws ExcecaoNegocio;
-	
-	List<Veiculo> consultar(String modelo) throws ExcecaoNegocio;
-
 	void remover(Long id) throws ExcecaoNegocio;
 
 	Veiculo consultar(Long id) throws ExcecaoNegocio;

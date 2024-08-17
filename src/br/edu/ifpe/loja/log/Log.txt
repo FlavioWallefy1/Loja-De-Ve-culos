@@ -109,3 +109,35 @@
 2024-08-17 09:54:43 - Veículo removido com sucesso. ID: 1
 2024-08-17 09:54:46 - Erro ao listar todos os veiculos, Nenhum veiculo cadastrado.
 2024-08-17 09:54:50 - Erro ao editar veículo: Veículo não encontrado!
+2024-08-17 10:43:06 - Veiculo cadastrado com sucesso. ID: 1, Modelo: cb300, Marca: honda, Preço: 502000.0
+2024-08-17 10:43:15 - Veiculo com ID: 1 encontrado
+2024-08-17 10:43:29 - Listar todos os veiculos com sucesso.
+2024-08-17 10:44:08 - Veículo editado com sucesso. ID: 1
+2024-08-17 10:45:11 - Veículo editado com sucesso. ID: 1
+2024-08-17 10:45:21 - Listar todos os veiculos com sucesso.
+2024-08-17 10:45:36 - Veículo removido com sucesso. ID: 1
+2024-08-17 12:01:58 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 35900.0
+2024-08-17 12:02:04 - Listar todos os veiculos com sucesso.
+2024-08-17 12:09:19 - Veiculo cadastrado com sucesso. ID: 1, Modelo: polo, Marca: volks, Preço: 29000.0
+2024-08-17 12:09:33 - Listar todos os veiculos com sucesso.
+2024-08-17 12:16:12 - Veiculo cadastrado com sucesso. ID: 2, Modelo: i3-, Marca: hyundai, Preço: 29000.0
+2024-08-17 14:48:25 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 1, Marca: 1, Preço: 20900.0
+2024-08-17 14:48:27 - Listar todos os veiculos com sucesso.
+2024-08-17 15:05:23 - Veiculo cadastrado com sucesso. ID: 1, Modelo: gol, Marca: volks, Preço: 20500.0
+2024-08-17 15:05:25 - Listar todos os veiculos com sucesso.
+2024-08-17 15:06:13 - Veiculo cadastrado com sucesso. ID: 2, Modelo: 1, Marca: 1, Preço: 2999.0
+2024-08-17 15:06:17 - Listar todos os veiculos com sucesso.
+2024-08-17 15:08:47 - Veículo editado com sucesso. ID: 1
+2024-08-17 15:08:52 - Listar todos os veiculos com sucesso.
+2024-08-17 15:22:29 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 27000.0
+2024-08-17 15:25:32 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 31300.0
+2024-08-17 15:25:52 - Listar todos os veiculos com sucesso.
+2024-08-17 15:27:04 - Erro ao cadastrar Veículo:Já existe um veículo cadastrado com a placa informada!
+2024-08-17 15:28:00 - Veiculo cadastrado com sucesso. ID: 2, Modelo: fan, Marca: 2005, Preço: 21700.0
+2024-08-17 15:28:10 - Veiculo com ID: 2 encontrado
+2024-08-17 15:32:38 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chevrolet, Preço: 23000.0
+2024-08-17 15:32:45 - Listar todos os veiculos com sucesso.
+2024-08-17 15:35:05 - Veiculo cadastrado com sucesso. ID: 1, Modelo: gol, Marca: volks, Preço: 12000.0
+2024-08-17 15:35:07 - Listar todos os veiculos com sucesso.
+2024-08-17 15:36:32 - Veículo editado com sucesso. ID: 1
+2024-08-17 15:36:36 - Listar todos os veiculos com sucesso.

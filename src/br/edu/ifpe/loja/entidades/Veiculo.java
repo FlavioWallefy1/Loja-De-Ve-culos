@@ -1,5 +1,10 @@
 package br.edu.ifpe.loja.entidades;
 
+import java.time.LocalDate;
+
+import br.edu.ifpe.loja.util.AdapterSinitro;
+import br.edu.ifpe.loja.util.DataSinitro;
+
 public abstract class Veiculo extends EntidadeBase implements IVeiculo{
     private String modelo;
     private String marca;
@@ -8,9 +13,11 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
     private String placa;
     private double preco;
     private IVeiculo veiculo;
+    protected String dataSinistro;
+    private static final AdapterSinitro adapterSinitro = new DataSinitro();
     
 
-    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa, double preco) {
+    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa, double preco, String dataSinistro) {
         super();
         this.modelo = modelo;
         this.marca = marca;
@@ -18,6 +25,7 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         this.anoModelo = anoModelo;
         this.placa = placa;
         this.preco = preco;
+        this.dataSinistro = dataSinistro;
     }
     
     public IVeiculo getIVeiculo(){
@@ -76,6 +84,22 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         this.preco = preco;
     }
     
+    public String getDataSinistro() {
+        return dataSinistro;
+    }
+
+    public void setDataSinistro(String dataSinistro) {
+        this.dataSinistro = dataSinistro;
+    }
+
+    public String getDataSinistroExtenso() {
+        return adapterSinitro.formatarExtenso(dataSinistro);
+    }
+
+    public String getDataSinistroSistemaPortugues() {
+        return adapterSinitro.formatarSistemaPortugues(dataSinistro);
+    }
+    
     public abstract String prepararVeiculo();
 
 	// Classe interna Builder
@@ -87,6 +111,12 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         private int anoModelo;
         private String placa;
         private double preco;
+        private String dataSinistro;
+
+        public VeiculoBuilder dataSinistro(String dataSinistro) {
+            this.dataSinistro = dataSinistro;
+            return this;
+        }
 
         public VeiculoBuilder id(Long id) {
             this.id = id;
@@ -124,7 +154,7 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         }
 
         public Veiculo criar() {
-            return new Veiculo(modelo, marca, anoFabricacao, anoModelo, placa, preco) {
+            return new Veiculo(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro ) {
 
 				@Override
 				public String prepararVeiculo() {

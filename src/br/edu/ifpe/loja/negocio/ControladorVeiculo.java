@@ -54,15 +54,5 @@ public class ControladorVeiculo implements IControladorVeiculo {
         return dao.listarTodos();
     }
 
-	@Override
-	public void remover(String placa) throws ExcecaoNegocio {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public List<Veiculo> consultar(String modelo) throws ExcecaoNegocio {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
