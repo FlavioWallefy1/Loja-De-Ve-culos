@@ -8,9 +8,18 @@ import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
 public class Facade {
 
     private IControladorVeiculo controladorVeiculo;
-
+    
+    private static Facade instanciaUnica;
+    
     public Facade() {
         controladorVeiculo = new ControladorVeiculo();
+    }
+   
+    public static Facade getInstancia() {
+        if (instanciaUnica == null) {
+            instanciaUnica = new Facade();
+        }
+        return instanciaUnica;
     }
 
     public void inserir(Veiculo veiculo) throws ExcecaoNegocio {
