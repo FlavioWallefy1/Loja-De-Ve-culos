@@ -1,6 +1,6 @@
 package br.edu.ifpe.loja.main;
 
-import br.ifpe.edu.loja.apresentacao.TelaVeiculo;
+import  br.edu.ifpe.loja.apresentacao.TelaVeiculo;
 
 public class Main {
 
