@@ -6,7 +6,7 @@ import br.edu.ifpe.loja.persistencia.FabricaDAO;
 import br.edu.ifpe.loja.persistencia.GenericDAO;
 import java.util.List;
 
-public class ControladorVeiculo implements IControladorVeiculo {
+public class ControladorVeiculo extends ControladorGenerico implements IControladorVeiculo {
 
     private GenericDAO<Veiculo> dao = FabricaDAO.getVeiculoDAO();
 
@@ -31,28 +31,7 @@ public class ControladorVeiculo implements IControladorVeiculo {
         dao.editar(veiculo);
     }
 
-    @Override
-    public void remover(Long id) throws ExcecaoNegocio {
-        Veiculo veiculoExistente = dao.consultar(id);
-        if (veiculoExistente == null) {
-            throw new ExcecaoNegocio("Esse veículo não está cadastrado!");
-        }
-        dao.remover(id);
-    }
-
-    @Override
-    public Veiculo consultar(Long id) throws ExcecaoNegocio {
-        Veiculo veiculo = dao.consultar(id);
-        if (veiculo == null) {
-            throw new ExcecaoNegocio("Veículo não encontrado!");
-        }
-        return veiculo;
-    }
-
-    @Override
-    public List<Veiculo> listarTodos() {
-        return dao.listarTodos();
-    }
+ 
 
 
 }

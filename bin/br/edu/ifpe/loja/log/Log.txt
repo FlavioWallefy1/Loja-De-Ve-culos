@@ -151,3 +151,10 @@
 2024-08-17 19:56:50 - Listar todos os veiculos com sucesso.
 2024-08-17 20:11:16 - Veiculo cadastrado com sucesso. ID: 1, Modelo: astra, Marca: chevrolet, Preço: 22300.0
 2024-08-17 20:11:28 - Veiculo com ID: 1 encontrado
+2024-08-17 21:51:39 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 25000.0
+2024-08-17 21:53:25 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 13500.0
+2024-08-17 21:55:10 - Veiculo cadastrado com sucesso. ID: 3, Modelo: fusca, Marca: chev, Preço: 20000.0
+2024-08-17 21:55:14 - Listar todos os veiculos com sucesso.
+2024-08-17 21:55:38 - Erro ao editar veículo: Veículo não encontrado!
+2024-08-17 21:56:38 - Veículo editado com sucesso. ID: 3
+2024-08-17 21:56:40 - Listar todos os veiculos com sucesso.
