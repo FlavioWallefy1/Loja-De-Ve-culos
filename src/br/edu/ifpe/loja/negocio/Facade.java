@@ -11,8 +11,8 @@ public class Facade {
     
     private static Facade instanciaUnica;
     
-    public Facade() {
-        controladorVeiculo = new ControladorVeiculo();
+    private Facade() {
+    	controladorVeiculo = FabricaControlador.getControladorVeiculo();
     }
    
     public static Facade getInstancia() {

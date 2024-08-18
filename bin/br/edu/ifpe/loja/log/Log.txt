@@ -158,3 +158,20 @@
 2024-08-17 21:55:38 - Erro ao editar veículo: Veículo não encontrado!
 2024-08-17 21:56:38 - Veículo editado com sucesso. ID: 3
 2024-08-17 21:56:40 - Listar todos os veiculos com sucesso.
+2024-08-18 09:20:59 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 27444.0
+2024-08-18 09:21:08 - Listar todos os veiculos com sucesso.
+2024-08-18 09:35:05 - Veículo removido com sucesso. ID: 1
+2024-08-18 09:43:29 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 13500.0
+2024-08-18 09:43:36 - Listar todos os veiculos com sucesso.
+2024-08-18 09:57:20 - Erro ao editar veículo: Veículo não encontrado!
+2024-08-18 09:58:02 - Veículo editado com sucesso. ID: 1
+2024-08-18 09:58:05 - Listar todos os veiculos com sucesso.
+2024-08-18 09:58:36 - Erro ao consultar veiculo com ID: 2 - Veículo não encontrado!
+2024-08-18 09:58:38 - Veiculo com ID: 1 encontrado
+2024-08-18 12:28:07 - Veiculo cadastrado com sucesso. ID: 1, Modelo: gol, Marca: volks, Preço: 50000.0
+2024-08-18 12:28:12 - Listar todos os veiculos com sucesso.
+2024-08-18 12:28:19 - Veiculo com ID: 1 encontrado
+2024-08-18 12:29:13 - Veículo editado com sucesso. ID: 1
+2024-08-18 12:29:16 - Listar todos os veiculos com sucesso.
+2024-08-18 12:29:40 - Veículo removido com sucesso. ID: 1
+2024-08-18 12:29:41 - Erro ao listar todos os veiculos, Nenhum veiculo cadastrado.

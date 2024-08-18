@@ -31,7 +31,5 @@ public class ControladorVeiculo extends ControladorGenerico implements IControla
         dao.editar(veiculo);
     }
 
- 
-
 
 }
