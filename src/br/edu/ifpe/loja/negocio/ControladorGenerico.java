@@ -7,7 +7,7 @@ import br.edu.ifpe.loja.excecao.ExcecaoNegocio;
 import br.edu.ifpe.loja.persistencia.FabricaDAO;
 import br.edu.ifpe.loja.persistencia.GenericDAO;
 
-public class ControladorGenerico {
+public abstract class ControladorGenerico {
 
 	private GenericDAO<Veiculo> dao = FabricaDAO.getVeiculoDAO();
 	
