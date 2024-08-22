@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/fwso/Documents/Loja-De-Veiculos/joda-time-2.12.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/fwso/Documents/Loja-De-Veiculos/caelum-stella-core-2.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/flavi/OneDrive/Documentos/Loja-De-Veiculos/joda-time-2.12.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/flavi/OneDrive/Documentos/Loja-De-Veiculos/caelum-stella-core-2.1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

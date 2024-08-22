@@ -175,3 +175,66 @@
 2024-08-18 12:29:16 - Listar todos os veiculos com sucesso.
 2024-08-18 12:29:40 - Veículo removido com sucesso. ID: 1
 2024-08-18 12:29:41 - Erro ao listar todos os veiculos, Nenhum veiculo cadastrado.
+2024-08-19 03:44:01 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 85000.0
+2024-08-19 03:56:11 - Erro ao listar todos os veiculos, Nenhum veiculo cadastrado.
+2024-08-19 03:59:49 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 21500.0
+2024-08-19 04:04:22 - Veiculo com ID: 1 encontrado
+2024-08-20 15:04:31 - Veiculo cadastrado com sucesso. ID: 1, Modelo: 1, Marca: ceclta, Preço: 20000.0
+2024-08-20 15:05:12 - Veiculo cadastrado com sucesso. ID: 2, Modelo: 1, Marca: 1, Preço: 20000.0
+2024-08-20 15:05:15 - Veiculo com ID: 1 encontrado
+2024-08-22 11:04:08 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2000.0
+2024-08-22 11:04:32 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 2000.0
+2024-08-22 11:04:36 - Listar todos os veiculos com sucesso.
+2024-08-22 11:11:21 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2000.0
+2024-08-22 11:11:48 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 2000.0
+2024-08-22 11:12:35 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20000.0
+2024-08-22 11:12:55 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 2000.0
+2024-08-22 11:12:57 - Listar todos os veiculos com sucesso.
+2024-08-22 11:41:10 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2000.0
+2024-08-22 11:41:15 - Veiculo com ID: 1 encontrado
+2024-08-22 11:43:27 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volkls, Preço: 200.0
+2024-08-22 11:43:28 - Listar todos os veiculos com sucesso.
+2024-08-22 11:44:19 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 200.0
+2024-08-22 11:44:21 - Listar todos os veiculos com sucesso.
+2024-08-22 11:50:10 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2000.0
+2024-08-22 11:50:45 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2222.0
+2024-08-22 11:51:27 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20222.0
+2024-08-22 11:51:52 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 2000.0
+2024-08-22 12:19:05 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 200.0
+2024-08-22 12:19:07 - Listar todos os veiculos com sucesso.
+2024-08-22 12:52:14 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20000.0
+2024-08-22 14:23:38 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 5200.0
+2024-08-22 14:24:06 - Veiculo cadastrado com sucesso. ID: 2, Modelo: bizz, Marca: honda, Preço: 4234.0
+2024-08-22 14:28:36 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: voplks, Preço: 25000.0
+2024-08-22 14:28:40 - Listar todos os veiculos com sucesso.
+2024-08-22 14:29:58 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 5200.0
+2024-08-22 14:30:00 - Listar todos os veiculos com sucesso.
+2024-08-22 14:30:23 - Erro ao editar veículo: Veículo não encontrado!
+2024-08-22 14:31:02 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 3244.0
+2024-08-22 14:31:04 - Listar todos os veiculos com sucesso.
+2024-08-22 14:47:20 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 25000.0
+2024-08-22 14:47:21 - Listar todos os veiculos com sucesso.
+2024-08-22 14:52:44 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 220.0
+2024-08-22 14:52:45 - Listar todos os veiculos com sucesso.
+2024-08-22 14:57:18 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 2332.0
+2024-08-22 14:57:18 - Listar todos os veiculos com sucesso.
+2024-08-22 15:06:03 - Veiculo cadastrado com sucesso. ID: 1, Modelo: ceclrta, Marca: volks, Preço: 2000.0
+2024-08-22 15:06:04 - Listar todos os veiculos com sucesso.
+2024-08-22 15:10:52 - Veiculo cadastrado com sucesso. ID: 1, Modelo: velta, Marca: olvsa, Preço: 2000.0
+2024-08-22 15:10:53 - Listar todos os veiculos com sucesso.
+2024-08-22 15:10:57 - Listar todos os veiculos com sucesso.
+2024-08-22 15:15:17 - Veiculo cadastrado com sucesso. ID: 1, Modelo: biz, Marca: honda, Preço: 2000.0
+2024-08-22 15:15:18 - Listar todos os veiculos com sucesso.
+2024-08-22 15:25:00 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 5200.0
+2024-08-22 15:25:02 - Listar todos os veiculos com sucesso.
+2024-08-22 15:26:49 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20.0
+2024-08-22 15:26:50 - Listar todos os veiculos com sucesso.
+2024-08-22 15:29:10 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 200.0
+2024-08-22 15:29:11 - Listar todos os veiculos com sucesso.
+2024-08-22 15:31:46 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20.0
+2024-08-22 15:31:47 - Listar todos os veiculos com sucesso.
+2024-08-22 15:35:04 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20.0
+2024-08-22 15:35:04 - Listar todos os veiculos com sucesso.
+2024-08-22 15:54:03 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 5020.0
+2024-08-22 15:54:27 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 25.0
+2024-08-22 15:54:31 - Listar todos os veiculos com sucesso.

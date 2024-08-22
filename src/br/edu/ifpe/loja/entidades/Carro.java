@@ -9,8 +9,9 @@ public class Carro extends Veiculo
 	}
 
 	@Override
-	public String prepararVeiculo() {		
-		return "Ajustando o banco e espelhos do carro.";
+	public String ajusteEspecifico() {
+		return "Ajustando o banco e espelhos do carro...";
+		
 	}
 
 }

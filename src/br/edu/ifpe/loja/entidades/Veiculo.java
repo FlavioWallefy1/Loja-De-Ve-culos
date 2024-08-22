@@ -96,10 +96,17 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         return adapterSinitro.formatarExtenso(dataSinistro);
     }
 
- 
-    
-    public abstract String prepararVeiculo();
-
+     public String prepararVeiculo() {
+    	 verificarDocumentacao();
+         return ajusteEspecifico();
+     }
+     
+     public String verificarDocumentacao() {
+		return "Verificando documentação do veículo...";
+	}
+     
+     public abstract String ajusteEspecifico();
+     
 	// Classe interna Builder
     public static class VeiculoBuilder {
         private Long id;
@@ -155,10 +162,11 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
             return new Veiculo(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro ) {
 
 				@Override
-				public String prepararVeiculo() {
-					// TODO Auto-generated method stub
-					return "Preparando veiculo";
+				public String ajusteEspecifico() {
+					return "Ajustando Veiculo";
 				}
+
+	
             	
             };
         }

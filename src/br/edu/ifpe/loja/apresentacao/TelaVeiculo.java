@@ -334,13 +334,14 @@ private void consultar() {
 
 
 private void exibirInformacoesVeiculo(Veiculo veiculo) {
-	System.out.println("ID: " + veiculo.getId());
-	System.out.println("Modelo: " + veiculo.getModelo());
-	System.out.println("Marca: " + veiculo.getMarca());
-	System.out.println("Ano: " + veiculo.getAnoModelo());
-	System.out.println("Placa: " + veiculo.getPlaca());
-	System.out.println("Preço: " + veiculo.getPreco());
-
+    System.out.println("Informações do Veículo:");
+    System.out.println("Modelo: " + veiculo.getModelo());
+    System.out.println("Marca: " + veiculo.getMarca());
+    System.out.println("Ano de Fabricação: " + veiculo.getAnoFabricacao());
+    System.out.println("Ano do Modelo: " + veiculo.getAnoModelo());
+    System.out.println("Placa: " + veiculo.getPlaca());
+    System.out.println("Preço: " + veiculo.getPreco());
+    System.out.println("---------------------------");
 	if (veiculo instanceof Carro) {
 		System.out.println("Tipo: Carro");
 
@@ -357,11 +358,10 @@ private void exibirInformacoesVeiculo(Veiculo veiculo) {
 		System.out.println("Data do Sinistro: Não houve sinistro");
 	}
 
-	System.out.println("Método de Preparação: " + veiculo.prepararVeiculo());
-
+	System.out.println("Documentação: " + veiculo.verificarDocumentacao());
+    System.out.println("Preparando Veiculo: " + veiculo.prepararVeiculo());
+    
 }
-
-
 
 private String lerString(String nomeAtributo) {
 	String entrada = "";

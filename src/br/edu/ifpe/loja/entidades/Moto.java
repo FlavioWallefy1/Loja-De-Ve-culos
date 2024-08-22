@@ -8,7 +8,9 @@ public class Moto extends Veiculo {
 	}
 
 	@Override
-	public String prepararVeiculo() {
+	public String ajusteEspecifico() {
 		return "Colocando o capacete e ajustando a moto";
+		
 	}
+
 }
