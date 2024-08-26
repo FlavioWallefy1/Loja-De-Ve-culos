@@ -1,23 +1,23 @@
 package br.edu.ifpe.loja.entidades;
 
-import java.time.LocalDate;
+
 
 import br.edu.ifpe.loja.util.AdapterSinitro;
 import br.edu.ifpe.loja.util.DataSinitro;
 
-public abstract class Veiculo extends EntidadeBase implements IVeiculo{
+public abstract class Veiculo extends EntidadeBase implements IVeiculo {
     private String modelo;
     private String marca;
     private int anoFabricacao;
     private int anoModelo;
     private String placa;
     private double preco;
+    private String renavam; 
     private IVeiculo veiculo;
     protected String dataSinistro;
     private static final AdapterSinitro adapterSinitro = new DataSinitro();
-    
 
-    public Veiculo(String modelo, String marca,  int anoFabricacao,  int anoModelo, String placa, double preco, String dataSinistro) {
+    public Veiculo(String modelo, String marca, int anoFabricacao, int anoModelo, String placa, double preco, String dataSinistro, String renavam) {
         super();
         this.modelo = modelo;
         this.marca = marca;
@@ -26,13 +26,25 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         this.placa = placa;
         this.preco = preco;
         this.dataSinistro = dataSinistro;
+        this.renavam = renavam;
     }
-    
-    public IVeiculo getIVeiculo(){
+
+  
+    public String getRenavam() {
+        return renavam;
+    }
+
+  
+
+    public void setRenavam(String renavam) {
+		this.renavam = renavam;
+	}
+
+	public IVeiculo getIVeiculo() {
         return veiculo;
     }
 
-    public void setIVeiculo(IVeiculo veiculo){
+    public void setIVeiculo(IVeiculo veiculo) {
         this.veiculo = veiculo;
     }
 
@@ -83,7 +95,7 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
     public void setPreco(double preco) {
         this.preco = preco;
     }
-    
+
     public String getDataSinistro() {
         return dataSinistro;
     }
@@ -96,18 +108,18 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         return adapterSinitro.formatarExtenso(dataSinistro);
     }
 
-     public String prepararVeiculo() {
-    	 verificarDocumentacao();
-         return ajusteEspecifico();
-     }
-     
-     public String verificarDocumentacao() {
-		return "Verificando documentação do veículo...";
-	}
-     
-     public abstract String ajusteEspecifico();
-     
-	// Classe interna Builder
+    public String prepararVeiculo() {
+        verificarDocumentacao();
+        return ajusteEspecifico();
+    }
+
+    public String verificarDocumentacao() {
+        return "Verificando documentação do veículo...";
+    }
+
+    public abstract String ajusteEspecifico();
+
+   
     public static class VeiculoBuilder {
         private Long id;
         private String modelo;
@@ -117,6 +129,12 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         private String placa;
         private double preco;
         private String dataSinistro;
+        private String renavam; 
+
+        public VeiculoBuilder renavam(String renavam) {
+            this.renavam = renavam;
+            return this;
+        }
 
         public VeiculoBuilder dataSinistro(String dataSinistro) {
             this.dataSinistro = dataSinistro;
@@ -159,15 +177,14 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo{
         }
 
         public Veiculo criar() {
-            return new Veiculo(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro ) {
+            return new Veiculo(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro, renavam) {
 
-				@Override
-				public String ajusteEspecifico() {
-					return "Ajustando Veiculo";
-				}
+                @Override
+                public String ajusteEspecifico() {
+                    return "Ajustando Veículo";
+                }
 
-	
-            	
             };
         }
-    }}
+    }
+}

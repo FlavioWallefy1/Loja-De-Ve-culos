@@ -238,3 +238,18 @@
 2024-08-22 15:54:03 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 5020.0
 2024-08-22 15:54:27 - Veiculo cadastrado com sucesso. ID: 2, Modelo: biz, Marca: honda, Preço: 25.0
 2024-08-22 15:54:31 - Listar todos os veiculos com sucesso.
+2024-08-25 21:41:55 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 25000.0
+2024-08-25 21:42:02 - Veiculo com ID: 1 encontrado
+2024-08-25 22:02:08 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: chev, Preço: 20000.0
+2024-08-25 22:02:17 - Veiculo com ID: 1 encontrado
+2024-08-25 22:02:48 - Veículo editado com sucesso. ID: 1
+2024-08-25 22:02:54 - Veiculo com ID: 1 encontrado
+2024-08-25 22:05:23 - Veiculo cadastrado com sucesso. ID: 2, Modelo: hob20, Marca: hiundai, Preço: 200.0
+2024-08-25 22:05:25 - Listar todos os veiculos com sucesso.
+2024-08-25 22:14:31 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: voks, Preço: 2000.0
+2024-08-25 22:16:28 - Veiculo cadastrado com sucesso. ID: 1, Modelo: celta, Marca: volks, Preço: 20.0
+2024-08-25 22:17:02 - Erro ao cadastrar Veículo:Já existe um veículo cadastrado com a placa informada!
+2024-08-25 22:17:51 - Erro ao cadastrar Veículo:Já existe um veículo cadastrado com o renavam informado!
+2024-08-25 22:18:05 - Listar todos os veiculos com sucesso.
+2024-08-25 22:20:59 - Veículo editado com sucesso. ID: 1
+2024-08-25 22:21:02 - Listar todos os veiculos com sucesso.

@@ -1,5 +1,7 @@
 package br.edu.ifpe.loja.apresentacao;
 
+import br.com.caelum.stella.validation.InvalidStateException;
+import br.com.caelum.stella.validation.RenavamValidator;
 import br.edu.ifpe.loja.entidades.ArCondicionado;
 import br.edu.ifpe.loja.entidades.BancoDeCouro;
 import br.edu.ifpe.loja.entidades.CambioAutomatico;
@@ -93,114 +95,120 @@ public class TelaVeiculo {
 
 
 	private void inserir() {
+	    int tipoVeiculo = 0;
+	    boolean entradaValida = false;
 
-		int tipoVeiculo = 0;
-		boolean entradaValida = false;
+	    while (!entradaValida) {
+	        try {
+	            System.out.println("Escolha o tipo de veículo:");
+	            System.out.println("1. Carro");
+	            System.out.println("2. Moto");
+	            tipoVeiculo = Integer.parseInt(scanner.nextLine());
 
+	            if (tipoVeiculo < 1 || tipoVeiculo > 2) {
+	                throw new ExcecaoNegocio("Tipo de veículo inválido. Escolha 1 para Carro ou 2 para Moto.");
+	            }
 
-		while (!entradaValida) {
-			try {
-				System.out.println("Escolha o tipo de veículo:");
-				System.out.println("1. Carro");
-				System.out.println("2. Moto");
-				tipoVeiculo = Integer.parseInt(scanner.nextLine());
+	            entradaValida = true;
+	        } catch (NumberFormatException e) {
+	            System.out.println("Entrada inválida! Por favor, insira 1 para Carro ou 2 para Moto.");
+	        } catch (ExcecaoNegocio e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
 
-				if (tipoVeiculo < 1 || tipoVeiculo > 2) {
-					throw new ExcecaoNegocio("Tipo de veículo inválido. Escolha 1 para Carro ou 2 para Moto.");
-				}
+	    String modelo = this.lerString("modelo");
+	    String marca = this.lerString("marca");
+	    int anoFabricacao;
 
-				entradaValida = true;
-			} catch (NumberFormatException e) {
-				System.out.println("Entrada inválida! Por favor, insira 1 para Carro ou 2 para Moto.");
-			} catch (ExcecaoNegocio e) {
-				System.out.println(e.getMessage());
-			}
-		}
-
-		String modelo = this.lerString("modelo");
-		String marca = this.lerString("marca");
-		int anoFabricacao;
-
-		do {
-			anoFabricacao = this.lerInt("ano de fabricação");
-			if (String.valueOf(anoFabricacao).length() != 4) {
+	    do {
+	        anoFabricacao = this.lerInt("ano de fabricação");
+	        if (String.valueOf(anoFabricacao).length() != 4) {
 	            System.out.println("Ano de fabricação deve ter 4 dígitos. Por favor, insira novamente.");
 	        } else if (anoFabricacao > LocalDate.now().getYear()) {
-				System.out.println("Ano de fabricação não pode ser maior que o ano atual. Por favor, insira novamente.");
-			}
-		} while (String.valueOf(anoFabricacao).length() != 4 || anoFabricacao > LocalDate.now().getYear());
+	            System.out.println("Ano de fabricação não pode ser maior que o ano atual. Por favor, insira novamente.");
+	        }
+	    } while (String.valueOf(anoFabricacao).length() != 4 || anoFabricacao > LocalDate.now().getYear());
 
+	    int anoModelo;
+	    do {
+	        anoModelo = this.lerInt("ano do modelo");
+	        if (anoModelo < anoFabricacao || anoModelo > anoFabricacao + 1) {
+	            System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
+	        }
+	    } while (anoModelo < anoFabricacao || anoModelo > anoFabricacao + 1);
 
-		int anoModelo;
-		do {
-			anoModelo = this.lerInt("ano do modelo");
-			if (anoModelo < anoFabricacao || anoModelo > anoFabricacao + 1) {
-				System.out.println("Ano do modelo deve ser igual ao ano de fabricação ou, no máximo, um ano a mais. Por favor, insira novamente.");
-			}
-		} while (anoModelo < anoFabricacao || anoModelo > anoFabricacao + 1);
+	    String placa;
+	    do {
+	        placa = this.lerString("placa").toUpperCase().replaceAll("[^A-Z0-9]", "");
 
+	        if (placa.matches("^[A-Z]{3}\\d{4}$")) {
+	            placa = placa.substring(0, 3) + "-" + placa.substring(3);
+	        }
 
-		String placa;
-		do {
-			placa = this.lerString("placa").toUpperCase().replaceAll("[^A-Z0-9]", "");
+	        if (!ValidadorPlaca.validarPlaca(placa)) {
+	            System.out.println("Placa inválida! Por favor, insira uma placa no formato correto (Antigo: AAA-1234 ou Mercosul: AAA1A23).");
+	        }
 
+	    } while (!ValidadorPlaca.validarPlaca(placa));
 
-			if (placa.matches("^[A-Z]{3}\\d{4}$")) {
-				placa = placa.substring(0, 3) + "-" + placa.substring(3);
-			}
+	    double preco = this.lerDouble("preço");
 
-			
-			if (!ValidadorPlaca.validarPlaca(placa)) {
-				System.out.println("Placa inválida! Por favor, insira uma placa no formato correto (Antigo: AAA-1234 ou Mercosul: AAA1A23).");
-			}
+	    boolean entrada = false;
+	    int teveSinistro = 0;
+	    String dataSinistro = null;
+	    while (!entrada) {
+	        try {
+	            System.out.println("O veículo tem algum sinistro?");
+	            System.out.println("1. Sim");
+	            System.out.println("2. Não");
+	            teveSinistro = Integer.parseInt(scanner.nextLine());
 
-		} while (!ValidadorPlaca.validarPlaca(placa));
+	            if (teveSinistro == 1) {
+	                dataSinistro = lerDataSinistro(anoFabricacao);
+	            }
 
+	            entrada = true;
+	        } catch (NumberFormatException e) {
+	            System.out.println("Entrada inválida! Por favor, insira 1 para Sim ou 2 para Não.");
+	        }
+	    }
 
-		double preco = this.lerDouble("preço");
+	    String renavam = "";
+	    boolean renavamValido = false;
+	    while (!renavamValido) {
+	        renavam = this.lerString("RENAVAM");
+	        try {
+	            RenavamValidator validator = new RenavamValidator();
+	            validator.assertValid(renavam);
+	            renavamValido = true;
+	        } catch (InvalidStateException e) {
+	            System.out.println("Renavam inválido: " + e.getMessage() + ". Por favor, insira novamente.");
+	        }
+	    }
 
-		boolean entrada = false;
-		int teveSinistro = 0;
-		String dataSinistro = null;
-		while (!entrada) {
-			try {
-				System.out.println("O veículo tem algum sinistro?");
-				System.out.println("1. Sim");
-				System.out.println("2. Não");
-				teveSinistro = Integer.parseInt(scanner.nextLine());
+	    Veiculo veiculo;
+	    if (tipoVeiculo == 1) {
+	        veiculo = new Carro(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro, renavam);
+	    } else {
+	        veiculo = new Moto(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro, renavam);
+	    }
 
-				if ( teveSinistro == 1) {
-					dataSinistro = lerDataSinistro(anoFabricacao);
-				}
+	    IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
+	    veiculo.setPreco(veiculoDecorado.getPreco());
 
-				entrada = true;
-			} catch (NumberFormatException e) {
-				System.out.println("Entrada inválida! Por favor, insira 1 para Sim ou 2 para Não.");
-			}
-		}
-	
-
-	Veiculo veiculo;
-	if (tipoVeiculo == 1) {
-		veiculo = new Carro(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro);
-	} else {
-		veiculo = new Moto(modelo, marca, anoFabricacao, anoModelo, placa, preco, dataSinistro);
+	    try {
+	        facade.inserir(veiculo);
+	        System.out.println("Veículo cadastrado com sucesso!");
+	        System.out.println("ID do veículo: " + veiculo.getId());
+	        System.out.println("Preço final do veículo: " + veiculo.getPreco());
+	        LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s, Preço: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca(), veiculo.getPreco()));
+	    } catch (ExcecaoNegocio e) {
+	        System.out.println(e.getMessage());
+	        LogLojaVeiculos.registrarMovimentacao("Erro ao cadastrar Veículo:" + e.getMessage());
+	    }
 	}
 
-	IVeiculo veiculoDecorado = adicionarAcessorios(veiculo);
-	veiculo.setPreco(veiculoDecorado.getPreco());
-
-	try {
-		facade.inserir(veiculo);
-		System.out.println("Veículo cadastrado com sucesso!");
-		System.out.println("ID do veículo: " + veiculo.getId());
-		System.out.println("Preço final do veículo: " + veiculo.getPreco());
-		LogLojaVeiculos.registrarMovimentacao(String.format("Veiculo cadastrado com sucesso. ID: %d, Modelo: %s, Marca: %s, Preço: %s", veiculo.getId(), veiculo.getModelo(), veiculo.getMarca(), veiculo.getPreco()));
-	} catch (ExcecaoNegocio e) {
-		System.out.println(e.getMessage());
-		LogLojaVeiculos.registrarMovimentacao("Erro ao cadastrar Veículo:" + e.getMessage());
-	}
-}
 
 
 
@@ -341,7 +349,9 @@ private void exibirInformacoesVeiculo(Veiculo veiculo) {
     System.out.println("Ano do Modelo: " + veiculo.getAnoModelo());
     System.out.println("Placa: " + veiculo.getPlaca());
     System.out.println("Preço: " + veiculo.getPreco());
+    System.out.println("Renavam: " + veiculo.getRenavam());
     System.out.println("---------------------------");
+
 	if (veiculo instanceof Carro) {
 		System.out.println("Tipo: Carro");
 
@@ -360,6 +370,7 @@ private void exibirInformacoesVeiculo(Veiculo veiculo) {
 
 	System.out.println("Documentação: " + veiculo.verificarDocumentacao());
     System.out.println("Preparando Veiculo: " + veiculo.prepararVeiculo());
+    
     
 }
 

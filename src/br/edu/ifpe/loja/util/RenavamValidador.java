@@ -1,15 +1,24 @@
 package br.edu.ifpe.loja.util;
 
-import br.com.caelum.stella.validation.RenavamValidator;
 import br.com.caelum.stella.validation.InvalidStateException;
+import br.com.caelum.stella.validation.RenavamValidator;
 
 public class RenavamValidador implements IValidator {
 
-	@Override
-	public int RenavamValidator(int renavam) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    private RenavamValidator renavamValidator;
 
+    public RenavamValidador() {
+        this.renavamValidator = new RenavamValidator();
+    }
 
+    @Override
+    public boolean validar(String renavam) {
+        try {
+            renavamValidator.assertValid(renavam); 
+            return true; 
+        } catch (InvalidStateException e) {
+            
+            return false;
+        }
+    }
 }

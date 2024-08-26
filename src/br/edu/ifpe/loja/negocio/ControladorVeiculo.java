@@ -14,12 +14,17 @@ public class ControladorVeiculo extends ControladorGenerico implements IControla
     public void inserir(Veiculo veiculo) throws ExcecaoNegocio {
         List<Veiculo> veiculosComPlaca = dao.listarTodos();
         for (Veiculo v : veiculosComPlaca) {
-            if (v.getPlaca().equalsIgnoreCase(veiculo.getPlaca())) {
+            if (v.getPlaca().equalsIgnoreCase(veiculo.getPlaca())){
                 throw new ExcecaoNegocio("Já existe um veículo cadastrado com a placa informada!");
+            }
+            else if(v.getRenavam().equalsIgnoreCase(veiculo.getRenavam())){
+            	throw new ExcecaoNegocio("Já existe um veículo cadastrado com o renavam informado!");
             }
         }
         dao.inserir(veiculo);
     }
+    
+    
 
     @Override
     public void editar(Veiculo veiculo) throws ExcecaoNegocio {
