@@ -9,7 +9,7 @@ public class Moto extends Veiculo {
 
 	@Override
 	public String ajusteEspecifico() {
-		return "Colocando o capacete e ajustando a moto";
+		return "Colocando o capacete e ajustando a moto...";
 		
 	}
 

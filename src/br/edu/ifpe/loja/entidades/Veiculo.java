@@ -1,7 +1,5 @@
 package br.edu.ifpe.loja.entidades;
 
-
-
 import br.edu.ifpe.loja.util.AdapterSinitro;
 import br.edu.ifpe.loja.util.DataSinitro;
 
@@ -108,7 +106,7 @@ public abstract class Veiculo extends EntidadeBase implements IVeiculo {
         return adapterSinitro.formatarExtenso(dataSinistro);
     }
 
-    public String prepararVeiculo() {
+    public final String prepararVeiculo() {
         verificarDocumentacao();
         return ajusteEspecifico();
     }
